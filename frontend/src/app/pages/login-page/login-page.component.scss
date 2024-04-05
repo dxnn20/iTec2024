@@ -69,3 +69,17 @@ mat-form-field.mat-form-field-should-float label {
   height: 100vh;
   background-color: #34495e;
 }
+
+.noAccount{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.button{
+  font-size:0.6rem;
+  margin: auto;
+  padding: 0;
+  border-radius: 20px;
+}
