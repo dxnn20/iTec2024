@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {HistoryBarComponent} from "../history-bar/history-bar.component";
+import {App} from "../../App";
 
 @Component({
   selector: 'app-app-card',
@@ -11,5 +12,5 @@ import {HistoryBarComponent} from "../history-bar/history-bar.component";
   styleUrl: './app-card.component.scss'
 })
 export class AppCardComponent {
-
+  @Input() app: App;
 }

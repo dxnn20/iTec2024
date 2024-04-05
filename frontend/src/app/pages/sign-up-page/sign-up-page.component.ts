@@ -28,8 +28,7 @@ import {User} from "../../security/User";
     MatSelectModule,
     MatFormFieldModule,
     HomePageComponent,
-    RouterLink,
-
+    RouterLink
   ],
   templateUrl: './sign-up-page.component.html',
   styleUrl: './sign-up-page.component.scss'
