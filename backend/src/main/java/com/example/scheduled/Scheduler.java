@@ -38,8 +38,8 @@ public class Scheduler {
         }
     }
 
-    public boolean endpointCheck(String method, String link)
-    {
-        
-    }
+//    public boolean endpointCheck(String method, String link)
+//    {
+//
+//    }
 }
