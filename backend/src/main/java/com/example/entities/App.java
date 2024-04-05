@@ -14,6 +14,7 @@ public class App {
     private Long id;
 
     private String name;
+    private int seconds;
     private String status;
 
     @OneToMany(mappedBy = "app", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
@@ -42,6 +43,10 @@ public class App {
         return name;
     }
 
+    public int getSeconds() {
+        return seconds;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -57,6 +62,10 @@ public class App {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
 
     public void setStatus(String status) {

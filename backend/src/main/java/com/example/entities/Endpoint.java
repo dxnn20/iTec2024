@@ -12,6 +12,7 @@ public class Endpoint {
     private Long id;
 
     private String link;
+    private int seconds;
     private String status;
 
     @JsonIgnore
