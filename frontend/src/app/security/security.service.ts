@@ -5,7 +5,7 @@ import {BehaviorSubject} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class SecurityService {
+export class SecurityService{
   private user: User | undefined;
   private search: string;
 
