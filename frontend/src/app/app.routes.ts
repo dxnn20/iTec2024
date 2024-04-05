@@ -5,10 +5,12 @@ import {securityInterceptorInterceptor} from "./security/security-interceptor.in
 import {SecurityService} from "./security/security.service";
 import {SignUpPageComponent} from "./pages/sign-up-page/sign-up-page.component";
 import {isAdminGuard} from "./security/auth-guard.service";
+import {DashboardPageComponent} from "./pages/dashboard-page/dashboard-page.component";
 
 export const routes: Routes = [
   {path: '' , component: LoginPageComponent},
-  {path: 'home-page' , component: HomePageComponent, canActivate: [isAdminGuard]},
+  {path: 'home-page' , component: HomePageComponent},
   {path: 'login-page' , component: LoginPageComponent},
   {path: 'sign-up-page' , component: SignUpPageComponent},
+  {path: 'dashboard-page' , component: DashboardPageComponent, canActivate: [isAdminGuard]},
 ];

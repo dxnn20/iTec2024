@@ -11,7 +11,7 @@ import {MatSelect} from "@angular/material/select";
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {User} from "../../security/User";
+import {DashboardPageComponent} from "../dashboard-page/dashboard-page.component";
 import {HomePageComponent} from "../home-page/home-page.component";
 
 @Component({
@@ -29,7 +29,7 @@ import {HomePageComponent} from "../home-page/home-page.component";
     MatFormFieldModule,
     HomePageComponent,
     RouterLink,
-
+    DashboardPageComponent
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
@@ -50,7 +50,7 @@ export class LoginPageComponent {
       (response: any)=>{
         console.log(response);
         if(response != null)
-          this.router.navigateByUrl('/home-page').then();
+          this.router.navigateByUrl('/dashboard-page').then();
         else {
           alert("Invalid credentials");
         }
