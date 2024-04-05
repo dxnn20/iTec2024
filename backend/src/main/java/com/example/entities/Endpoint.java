@@ -35,9 +35,14 @@ public class Endpoint {
         return link;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public App getApp() {
         return app;
     }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -45,6 +50,10 @@ public class Endpoint {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setApp(App app) {
