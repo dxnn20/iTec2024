@@ -1,0 +1,23 @@
+.custom-card {
+  max-width: 100vw;
+}
+
+.mat-card-header {
+  display: flex;
+  justify-content: space-between; /* To push the children to the edges */
+  align-items: center; /* To vertically center align the children */
+}
+
+.left-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-title-container {
+  margin-left: 25px; /* Add some spacing between the logo and the title */
+}
+
+.status {
+  margin-left: auto; /* Push the status to the right */
+}
