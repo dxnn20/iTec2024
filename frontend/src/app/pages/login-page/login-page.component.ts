@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Route} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {MatFormField, MatInput} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
@@ -11,6 +12,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {User} from "../../security/User";
+import {HomePageComponent} from "../home-page/home-page.component";
 
 @Component({
   selector: 'app-login-page',
@@ -24,7 +26,9 @@ import {User} from "../../security/User";
     MatSelect,
     MatInputModule,
     MatSelectModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    HomePageComponent,
+
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
@@ -44,7 +48,14 @@ export class LoginPageComponent {
     this.http.post('http://localhost:1201/login',formData).subscribe(
       (response: any)=>{
         console.log(response);
-        this.router.navigate("home-page").then(r => console.log("redirected");
+        if(response.role === 'user')
+        {
+          this.router.navigate(['home-page']).then(r => console.log('navigated'));
+        }
+        else if (response.role === 'admin')
+        {
+          this.router.navigate(['admin-page']).then(r => console.log('navigated'));
+        }
         this.securityService.setUser(response);
       }
     );

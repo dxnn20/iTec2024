@@ -6,5 +6,5 @@ import {SecurityService} from "./security/security.service";
 
 export const routes: Routes = [
   {path: '' , component: LoginPageComponent},
-  {path: 'home-page' , component: HomePageComponent, canActivate: [securityInterceptorInterceptor]
+  {path: 'home-page' , component: HomePageComponent, canActivate: [securityInterceptorInterceptor]}
 ];
