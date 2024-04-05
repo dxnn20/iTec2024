@@ -27,7 +27,7 @@ public class Scheduler {
         for (int i=0;i<apps.size();i++)
         {
             List<Endpoint> endpoints=apps.get(i).getEndpoints();
-            for (int j=0;j<endpoints.size();j++)
+            if (endpoints!=null) for (int j=0;j<endpoints.size();j++)
             {
                 String status=endpoints.get(j).getStatus();
                 char[] s=status.toCharArray();
