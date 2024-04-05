@@ -19,7 +19,8 @@ public class App {
     private int seconds;
     private String status;
 
-    @OneToMany(mappedBy = "app", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    //@JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "app", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Endpoint> endpoints;
 
     @JsonIgnore
@@ -36,6 +37,18 @@ public class App {
         this.status = status;
         this.endpoints = endpoints;
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "App{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", seconds=" + seconds +
+                ", status='" + status + '\'' +
+                ", endpoints=" + endpoints +
+                ", user=" + user +
+                '}';
     }
 
     public void addEndpoint(Endpoint endpoint)
