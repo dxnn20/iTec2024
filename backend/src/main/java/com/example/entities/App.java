@@ -1,5 +1,7 @@
 package com.example.entities;
 
+import com.example.security.entities.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -20,12 +22,20 @@ public class App {
     @OneToMany(mappedBy = "app", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Endpoint> endpoints;
 
+    @JsonIgnore
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name="user_id", referencedColumnName = "id")
+    private User user;
+
     public App() {}
 
-    public App(Long id, String name, List<Endpoint> endpoints) {
+    public App(Long id, String name, int seconds, String status, List<Endpoint> endpoints, User user) {
         this.id = id;
         this.name = name;
+        this.seconds = seconds;
+        this.status = status;
         this.endpoints = endpoints;
+        this.user = user;
     }
 
     public void addEndpoint(Endpoint endpoint)
@@ -34,6 +44,7 @@ public class App {
         endpoints.add(endpoint);
         endpoint.setApp(this);
     }
+
 
     public Long getId() {
         return id;
@@ -55,6 +66,10 @@ public class App {
         return endpoints;
     }
 
+    public User getUser() {
+        return user;
+    }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -74,5 +89,9 @@ public class App {
 
     public void setEndpoints(List<Endpoint> endpoints) {
         this.endpoints = endpoints;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
