@@ -13,4 +13,5 @@ export const routes: Routes = [
   {path: 'login-page' , component: LoginPageComponent},
   {path: 'sign-up-page' , component: SignUpPageComponent},
   {path: 'dashboard-page' , component: DashboardPageComponent, canActivate: [isAdminGuard]},
+
 ];
