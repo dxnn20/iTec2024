@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping
+@RequestMapping("/security")
 public class SecurityController {
     @Autowired
     private UserRepository userRepository;
@@ -38,11 +38,11 @@ public class SecurityController {
         return json;
     }
 
-    @PostMapping("/security/sign-up")
-    public String securitySignUp(@RequestBody User user)
+    @PostMapping("/sign-up")
+    public void securitySignUp(@RequestBody User user)
     {
         System.out.println(user.toString());
         userRepository.save(user);
-        return "not logged in";
+//        return "not logged in";
     }
 }
