@@ -11,8 +11,8 @@ import {MatSelect} from "@angular/material/select";
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {User} from "../../security/User";
 import {HomePageComponent} from "../home-page/home-page.component";
+import {User} from "../../security/User";
 
 @Component({
   selector: 'app-login-page',
@@ -31,28 +31,17 @@ import {HomePageComponent} from "../home-page/home-page.component";
     RouterLink,
 
   ],
-  templateUrl: './login-page.component.html',
-  styleUrl: './login-page.component.scss'
+  templateUrl: './sign-up-page.component.html',
+  styleUrl: './sign-up-page.component.scss'
 })
-export class LoginPageComponent {
-  username : string
-  password : string
-  role : string
+export class SignUpPageComponent {
+  user : User = new User()
   constructor(private http: HttpClient, private router: Router, private securityService: SecurityService) {
   }
 
-  login()
+  signUp()
   {
-    const formData : FormData=new FormData();
-    formData.append('username',this.username);
-    formData.append('password',this.password);
-    this.http.post('http://localhost:1201/login',formData).subscribe(
-      (response: any)=>{
-        console.log(response);
-
-        this.securityService.setUser(response);
-      }
-    );
-    console.log(this.password);
+    console.log(this.user);
+    this.http.post("http://localhost:1201/security/sign-up",this.user).subscribe();
   }
 }

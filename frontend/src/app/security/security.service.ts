@@ -12,4 +12,8 @@ export class SecurityService {
   setUser(user: User) {
     this.user = user;
   }
+
+  isAuthenticated(): boolean {
+    return this.user !== undefined;
+  }
 }
