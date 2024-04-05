@@ -1,32 +1,28 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="container">
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+  <button mat-raised-button>+</button>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z7">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID</th>
+      <td mat-cell *matCellDef="let element"> {{ element.id }}</td>
+    </ng-container>
 
-  <!-- Position Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let element"> {{ element.name }}</td>
+    </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status</th>
+      <td mat-cell *matCellDef="let element"> {{ element.status }}</td>
+    </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef> Status </th>
-    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
-  </ng-container>
+    <ng-container matColumnDef="seconds">
+      <th mat-header-cell *matHeaderCellDef> Seconds</th>
+      <td mat-cell *matCellDef="let element"> {{ element.seconds }}</td>
+    </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="seconds">
-    <th mat-header-cell *matHeaderCellDef> Seconds </th>
-    <td mat-cell *matCellDef="let element"> {{element.seconds}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

@@ -1,5 +1,7 @@
 table {
-  width: 100%;
+  max-width: 50wv;
+  margin:auto;
+  display: flex;
 }
 
 tr.example-detail-row {
@@ -44,4 +46,9 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+
+.container{
+  width:100%;
+  display: flex;
 }

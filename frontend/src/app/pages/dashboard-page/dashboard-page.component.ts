@@ -14,7 +14,7 @@ import {
   MatTable, MatTableDataSource
 } from "@angular/material/table";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 
 export interface PeriodicElement {
   name: string;
@@ -53,7 +53,8 @@ export interface PeriodicElement {
     MatIconButton,
     MatHeaderCellDef,
     MatIconButton,
-    MatIconButton
+    MatIconButton,
+    MatButton
   ],
   animations: [
     trigger('detailExpand', [
