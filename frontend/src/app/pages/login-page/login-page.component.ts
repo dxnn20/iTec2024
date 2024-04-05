@@ -49,10 +49,13 @@ export class LoginPageComponent {
     this.http.post('http://localhost:1201/login',formData).subscribe(
       (response: any)=>{
         console.log(response);
-
+        if(response != null)
+          this.router.navigateByUrl('/home-page').then();
+        else {
+          alert("Invalid credentials");
+        }
         this.securityService.setUser(response);
       }
     );
-    console.log(this.password);
   }
 }
