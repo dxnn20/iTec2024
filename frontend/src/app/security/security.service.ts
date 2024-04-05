@@ -11,9 +11,14 @@ export class SecurityService{
 
   setUser(user: User) {
     this.user = user;
+    console.log(this.user);
+  }
+
+  getId(): number | undefined {
+    return this.user?.id
   }
 
   isAuthenticated(): boolean {
-    return this.user !== undefined;
+    return this.user != undefined;
   }
 }
