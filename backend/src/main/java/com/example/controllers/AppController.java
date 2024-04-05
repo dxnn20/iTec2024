@@ -25,6 +25,7 @@ public class AppController {
     @Autowired
     UserRepository userRepository;
 
+    // CREATE
     @PostMapping(path="/create/{id}")
     public void create(@RequestBody App app, @PathVariable Long id)
     {
@@ -33,16 +34,6 @@ public class AppController {
 
         user.addApp(app);
         userRepository.save(user);
-    }
-
-    @PostMapping(path="/create/endpoint/{id}")
-    public void create(@RequestBody Endpoint endpoint, @PathVariable Long id)
-    {
-        Optional<App> optionalApp=appRepository.findById(id);
-        App app= optionalApp.get();
-
-        app.addEndpoint(endpoint);
-        appRepository.save(app);
     }
 
 
