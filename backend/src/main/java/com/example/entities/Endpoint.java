@@ -11,7 +11,8 @@ public class Endpoint {
     @Column(name="id")
     private Long id;
 
-    private String link;
+    private String path;
+    private String method;
     private int seconds;
     private String status;
 
@@ -22,18 +23,30 @@ public class Endpoint {
 
     public Endpoint() {}
 
-    public Endpoint(Long id, String link, App app) {
+    public Endpoint(Long id, String path, String method, int seconds, String status, App app) {
         this.id = id;
-        this.link = link;
+        this.path = path;
+        this.method = method;
+        this.seconds = seconds;
+        this.status = status;
         this.app = app;
     }
+
 
     public Long getId() {
         return id;
     }
 
-    public String getLink() {
-        return link;
+    public String getPath() {
+        return path;
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public int getSeconds() {
+        return seconds;
     }
 
     public String getStatus() {
@@ -49,8 +62,16 @@ public class Endpoint {
         this.id = id;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
 
     public void setStatus(String status) {
