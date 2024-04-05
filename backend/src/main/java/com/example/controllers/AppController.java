@@ -20,7 +20,7 @@ public class AppController {
     @Autowired
     EndpointRepository endpointRepository;
 
-    @PostMapping(path="/create/app")
+    @PostMapping(path="/create")
     public void create(@RequestBody App app)
     {
         appRepository.save(app);
