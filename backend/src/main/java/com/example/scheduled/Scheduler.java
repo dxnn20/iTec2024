@@ -23,18 +23,23 @@ public class Scheduler {
     public void check()
     {
 //        System.out.println("schedules");
-//        List<App> apps=appRepository.findAll();
-//        for (int i=0;i<apps.size();i++)
-//        {
-//            List<Endpoint> endpoints=apps.get(i).getEndpoints();
-//            for (int j=0;j<endpoints.size();j++)
-//            {
-//                String status=endpoints.get(j).getStatus();
-//                char[] s=status.toCharArray();
-////                String nes= "";
-//                for (int t=0;t<143;t++) s[t]=s[t+1];
-//                s[status.length()-1]='g';
-//            }
-//        }
+        List<App> apps=appRepository.findAll();
+        for (int i=0;i<apps.size();i++)
+        {
+            List<Endpoint> endpoints=apps.get(i).getEndpoints();
+            for (int j=0;j<endpoints.size();j++)
+            {
+                String status=endpoints.get(j).getStatus();
+                char[] s=status.toCharArray();
+//                String nes= "";
+                for (int t=0;t<143;t++) s[t]=s[t+1];
+                s[status.length()-1]='g';
+            }
+        }
+    }
+
+    public boolean endpointCheck(String method, String link)
+    {
+        
     }
 }
