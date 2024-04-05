@@ -10,4 +10,8 @@ export class App {
     this.status = status;
     this.endpoint = endpoint;
   }
+
+  public getName(): string {
+    return this.name;
+  }
 }
