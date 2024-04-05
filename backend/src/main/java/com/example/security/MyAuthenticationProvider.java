@@ -33,13 +33,6 @@ public class MyAuthenticationProvider implements AuthenticationProvider {
         User user=userService.validateUser(username,password,userRepository);
         if (user!=null)       //return new UsernamePasswordAuthenticationToken(username,password,new ArrayList<>());
         {
-//            String[] roles = user.getRoles().split("_");
-//            List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-//
-//            for (String role : roles) {
-//                GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role);
-//                grantedAuthorities.add(grantedAuthority);
-//            }
             ObjectMapper mapper=new ObjectMapper();
             try {
                 String json=mapper.writeValueAsString(user);
