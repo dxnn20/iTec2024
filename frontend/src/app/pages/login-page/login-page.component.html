@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="mainBox">
+    <div class="mainBox__header">
+      <h1 class="mainBox__title">Log in</h1>
+    </div>
+    <div class="boxBody">
+      <mat-form-field appearance="fill">
+        <input [(ngModel)]="username" matInput placeholder="Username">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <input matInput placeholder="Password" [(ngModel)]="password" type="password">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>User Type</mat-label>
+        <mat-select [(ngModel)]="role">
+          <mat-option value="normal">Normal</mat-option>
+          <mat-option value="developer">Developer</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
+
+    </div>
+  </div>
+</div>
+
