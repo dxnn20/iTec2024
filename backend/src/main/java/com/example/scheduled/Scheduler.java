@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.http.HttpRequest;
 import java.util.List;
 
 @Component
@@ -27,6 +31,8 @@ public class Scheduler {
         for (int i=0;i<apps.size();i++)
         {
             List<Endpoint> endpoints=apps.get(i).getEndpoints();
+            if (endpoints!=null)
+            System.out.println(apps.get(i));
             if (endpoints!=null) for (int j=0;j<endpoints.size();j++)
             {
                 String status=endpoints.get(j).getStatus();
@@ -38,8 +44,11 @@ public class Scheduler {
         }
     }
 
-//    public boolean endpointCheck(String method, String link)
-//    {
-//
-//    }
+    public void endpointCheck(String method, String link) throws IOException {
+        URL url=new URL(link);
+        HttpURLConnection request=(HttpURLConnection) url.openConnection();
+        request.setRequestMethod(method.toUpperCase());
+        int responseCode = request.getResponseCode();
+        System.out.println(responseCode);
+    }
 }
