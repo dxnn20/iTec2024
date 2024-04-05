@@ -4,6 +4,7 @@ export class App {
   name: string;
   status: string;
   endpoint: Endpoint;
+  id: string;
 
   constructor(name: string, status: string, endpoint: Endpoint) {
     this.name = name;

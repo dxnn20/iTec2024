@@ -43,7 +43,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
     MatHeaderRowDef,
     MatRowDef,
     MatHeaderCellDef,
-    MatCellDef
+    MatCellDef,
+    AppCardComponent
   ],
   styleUrls: ['./home-page.component.scss']
 })
@@ -53,10 +54,15 @@ export class HomePageComponent {
 
   ngOnInit()
   {
-    this.http.get("https://localhost:1201/apps/getAllByUserId/"+this.securityService.getId()).subscribe()
+    this.http.get("http://localhost:1201/app/getAll").subscribe(
+      (data:any)=>{
+        this.dataSource=data;
+        console.log(data);
+      }
+    )
   }
 
   dataSource = new MatTableDataSource<[]>([]);
   displayedColumns: string[] = ['appCard']; // Only one column for app cards
-  dataSource = ELEMENT_DATA;
+  // dataSource/ = ELEMENT_DATA;
 }
