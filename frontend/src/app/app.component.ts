@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AppCardComponent } from './pages-components/app-card/app-card.component';
+import {HistoryBarComponent} from "./pages-components/history-bar/history-bar.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AppCardComponent,HistoryBarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

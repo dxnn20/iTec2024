@@ -1,0 +1,25 @@
+.history-bar {
+  display: flex;
+  flex-wrap: wrap; /* Allow columns to wrap to the next row */
+}
+
+.status-column {
+  width: 7px; /* Set width of each column */
+  height: 30px; /* Set height of each column */
+  margin-right: 5px; /* Add spacing between columns */
+  border-radius: 50px;
+}
+
+/* Define styles for different statuses */
+.ok {
+  background-color: #03dfa2;
+}
+
+.unstable {
+  background-color: #ffb84d;
+}
+
+.down {
+  background-color: #ff0060;
+}
+
