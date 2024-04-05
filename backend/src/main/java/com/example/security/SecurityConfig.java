@@ -35,6 +35,7 @@ public class SecurityConfig {
 //                .requestMatchers("/theatres/getAll").permitAll()
 //                .requestMatchers("/theatres/getById/{id}").permitAll()
                 .requestMatchers("/security/sign-up").permitAll()
+                .requestMatchers("/app/getAll").permitAll()
                 .requestMatchers("/security/admin").hasAuthority("admin")
                 .anyRequest().authenticated());
         httpSecurity.formLogin(form -> form.usernameParameter("username").passwordParameter("password").loginPage("/login")

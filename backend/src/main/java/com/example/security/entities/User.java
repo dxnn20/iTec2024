@@ -2,6 +2,7 @@ package com.example.security.entities;
 
 import com.example.entities.App;
 import com.example.entities.Endpoint;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class User {
     private String username;
     private String password;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<App> apps;
 
