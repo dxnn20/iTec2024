@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { AppCardComponent } from '../../pages-components/app-card/app-card.component';
+import {Component} from '@angular/core';
+import {AppCardComponent} from '../../pages-components/app-card/app-card.component';
 import {
   MatCell, MatCellDef,
   MatColumnDef,
@@ -56,22 +56,17 @@ export class HomePageComponent {
 
   // dataSource = new MatTableDataSource<[]>([]);
   displayedColumns: string[] = ['id', 'name', 'status', 'seconds'];
-  dataSource: App[]=  [];
+  dataSource: App[] = [];
 
-  constructor(private http: HttpClient, private securityService: SecurityService,private router:Router) {}
+  constructor(private http: HttpClient, private securityService: SecurityService, private router: Router) {
+  }
 
-  ngOnInit()
-  {
-    this.http.get("http://localhost:1201/app/getAll").subscribe(
-      (data:any)=>{
-        this.dataSource=data;
-        console.log(data);
-      }
-    )
+  ngOnInit() {
+    this.refresh()
   }
 
   refresh() {
-     this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
+    this.http.get("http://localhost:1201/app/getAll").subscribe(
       (data: any) => {
         this.dataSource = data
 
