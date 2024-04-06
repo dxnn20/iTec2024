@@ -42,3 +42,14 @@
 .Down {
   background-color: red;
 }
+
+.bar-container{
+  background-color: #c0baba;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  display: flex;
+  padding: 0 1.5px;
+  justify-content: left;
+  align-items: center;
+  margin: 10px;
+}
