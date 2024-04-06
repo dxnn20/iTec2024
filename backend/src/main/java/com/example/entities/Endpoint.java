@@ -13,7 +13,6 @@ public class Endpoint {
 
     private String path;
     private String method;
-    private int seconds;
     private String status;
 
     @JsonIgnore
@@ -23,11 +22,10 @@ public class Endpoint {
 
     public Endpoint() {}
 
-    public Endpoint(Long id, String path, String method, int seconds, String status, App app) {
+    public Endpoint(Long id, String path, String method, String status, App app) {
         this.id = id;
         this.path = path;
         this.method = method;
-        this.seconds = seconds;
         this.status = status;
         this.app = app;
     }
@@ -43,10 +41,6 @@ public class Endpoint {
 
     public String getMethod() {
         return method;
-    }
-
-    public int getSeconds() {
-        return seconds;
     }
 
     public String getStatus() {
@@ -68,10 +62,6 @@ public class Endpoint {
 
     public void setMethod(String method) {
         this.method = method;
-    }
-
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
     }
 
     public void setStatus(String status) {
