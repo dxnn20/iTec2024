@@ -71,11 +71,25 @@ public class EndpointController {
     }
 
 
+    // UPDATE
+    @PutMapping(path="/update")
+    public void updateById(@RequestBody Endpoint endpoint)
+    {
+        endpointRepository.save(endpoint);
+    }
+
+
     // DELETE
     @DeleteMapping(path="/deleteById/{id}")
     public void deleteById(@PathVariable Long id)
     {
         endpointRepository.deleteById(id);
+    }
+
+    @DeleteMapping("/a")
+    public void a()
+    {
+        System.out.println("fiuacensakdsma");
     }
 
 }
