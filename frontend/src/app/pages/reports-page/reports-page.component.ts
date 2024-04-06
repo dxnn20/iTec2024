@@ -44,9 +44,8 @@ export class ReportsPageComponent {
     // this.http.get('http://localhost:8080/endpoint/getAllBuggedByUserId' + this.securityService.getId()).subscribe((data: any) => {
     //   this.dataSource = data;
     // })
-    this.http.get('http://localhost:8080/endpoint/getAllBuggedByUserId/' + 1).subscribe((data: any) => {
+    this.http.get('http://localhost:1201/endpoint/getAllBuggedByUserId/'+ this.securityService.getId()).subscribe((data: any) => {
       this.dataSource = data;
     })
-
   }
 }
