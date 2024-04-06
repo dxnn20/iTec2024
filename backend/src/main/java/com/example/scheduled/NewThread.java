@@ -48,6 +48,7 @@ public class NewThread extends Thread{
             {
                 System.out.println(apps.get(i));
                 List<Endpoint> endpoints=apps.get(i).getEndpoints();
+                int a=0,b=0,c=0;
                 for (int j=0;j<endpoints.size();j++)
                 {
                     Endpoint endpoint=endpoints.get(j);
@@ -61,23 +62,34 @@ public class NewThread extends Thread{
                         {
                             if (endpoint.getCounter()>0)
                             {
+                                b++;
                                 stringBuilder.append('y');
                                 endpoint.setCounter(endpoint.getCounter()-1);
                             }
                             else
                             {
-                                if (endpoint.getBugged()==true) stringBuilder.append('y');
-                                else stringBuilder.append('g');
+                                if (endpoint.getBugged()==true) {
+                                    stringBuilder.append('y');
+                                    b++;
+                                }
+                                else {
+                                    stringBuilder.append('g');
+                                    a++;
+                                }
                             }
                         }
                         if (ok==false)
                         {
                             if (endpoint.getCounter()<10)
                             {
+                                b++;
                                 stringBuilder.append('y');
                                 endpoint.setCounter(endpoint.getCounter()+1);
                             }
-                            else stringBuilder.append('r');
+                            else {
+                                c++;
+                                stringBuilder.append('r');
+                            }
                         }
                         endpoint.setStatus(stringBuilder.toString());
                         endpointRepository.save(endpoint);
@@ -86,6 +98,12 @@ public class NewThread extends Thread{
                         throw new RuntimeException(e);
                     }
                 }
+                App app=apps.get(i);
+                if (endpoints.size()==0) app.setStatus("STABLE");
+                else if (c==endpoints.size() && endpoints.size()!=0) app.setStatus("DOWN");
+                else if (c>0 || b>0) app.setStatus("UNSTABLE");
+                else app.setStatus("STABLE");
+                appRepository.save(app);
             }
         }
     }
