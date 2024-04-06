@@ -15,4 +15,5 @@ export const routes: Routes = [
   {path: 'sign-up-page' , component: SignUpPageComponent},
   {path: 'dashboard-page' , component: DashboardPageComponent, canActivate: [isAdminGuard]},
   {path: 'app-add-endpoint/:id' , component: AddEndpointComponent, canActivate: [isAdminGuard]},
+  {path: 'app-add-endpoint/' , component: AddEndpointComponent, canActivate: [isAdminGuard]},
 ];

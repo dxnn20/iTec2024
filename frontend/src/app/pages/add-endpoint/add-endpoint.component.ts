@@ -10,6 +10,19 @@ import {MatButton} from "@angular/material/button";
 import {NgForOf} from "@angular/common";
 import {Endpoint} from "../../security/endpoint";
 import {FormsModule} from "@angular/forms";
+import {MatList, MatListItem} from "@angular/material/list";
+import {
+  MatCell, MatCellDef,
+  MatColumnDef,
+  MatHeaderCell, MatHeaderCellDef,
+  MatHeaderRow,
+  MatHeaderRowDef,
+  MatRow,
+  MatRowDef,
+  MatTable
+} from "@angular/material/table";
+import {DialogComponent} from "../../pages-components/dialog/dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-add-endpoint',
@@ -23,38 +36,40 @@ import {FormsModule} from "@angular/forms";
     MatFormField,
     MatButton,
     NgForOf,
-    FormsModule
+    FormsModule,
+    MatList,
+    MatListItem,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    MatRowDef,
+    MatHeaderRowDef,
+    MatHeaderCellDef,
+    MatCellDef
   ],
   templateUrl: './add-endpoint.component.html',
   styleUrl: './add-endpoint.component.scss'
 })
 export class AddEndpointComponent {
 
-  app: App = new App();
+  dataSource : Endpoint[] = []
 
   protected endPoint: Endpoint = new Endpoint()
+  displayedColumns: string[] =[ 'path', 'method', 'duration'];
 
-  constructor(private http: HttpClient, securityService: SecurityService, router: Router, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog, ) {
     this.refresh()
   }
 
   refresh() {
     this.http.get('http://localhost:1201/endpoint/getAllByAppId/' + this.route.snapshot.params['id']).subscribe(
       (data: any) => {
-        this.app = data;
+        this.dataSource = data;
+        console.log(this.dataSource )
       }
     )
-  }
-
-  submit(){
-    console.log(this.endPoint)
-    if(this.endPoint != null) {
-      // this.app.endpoint.push(this.endPoint)
-      this.http.post('http://localhost:1201/endpoint/createByAppId/' + this.route.snapshot.params['id'], this.endPoint).subscribe()
-      this.refresh()
-    }
-    else
-      alert("Please add a valid endpoint")
-
   }
 }

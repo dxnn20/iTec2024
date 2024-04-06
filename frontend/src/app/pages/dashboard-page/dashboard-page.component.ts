@@ -63,7 +63,7 @@ export class DashboardPageComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'status', 'seconds']
   dataSource = new MatTableDataSource(this.apps)
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private securityService: SecurityService, public dialog: MatDialog, private router: Router) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private securityService: SecurityService, protected dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {

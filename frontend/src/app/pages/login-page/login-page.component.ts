@@ -48,9 +48,8 @@ export class LoginPageComponent {
     formData.append('password',this.password);
     this.http.post('http://localhost:1201/login',formData).subscribe(
       (response: any)=>{
-        if(response != null) {
+        if(response.loggedin != 'no') {
           this.securityService.setUser(response);
-          console.log('User logged in');
           this.router.navigateByUrl('/dashboard-page').then(r => console.log('Navigated to dashboard'));
         }
         else {
