@@ -28,8 +28,29 @@ public class EndpointController {
         Optional<App> optionalApp=appRepository.findById(id);
         App app=optionalApp.get();
 
+        endpoint.setStatus("");
         app.addEndpoint(endpoint);
         appRepository.save(app);
+    }
+
+    @PostMapping(path="/reportBugById/{id}")
+    public void reportBugById(@PathVariable Long id)
+    {
+        Optional<Endpoint> optionalEndpoint=endpointRepository.findById(id);
+        Endpoint endpoint=optionalEndpoint.get();
+
+        endpoint.setBugged(true);
+        endpointRepository.save(endpoint);
+    }
+
+    @PostMapping(path="/reportFixById/{id}")
+    public void reportFixById(@PathVariable Long id)
+    {
+        Optional<Endpoint> optionalEndpoint=endpointRepository.findById(id);
+        Endpoint endpoint=optionalEndpoint.get();
+
+        endpoint.setBugged(false);
+        endpointRepository.save(endpoint);
     }
 
 

@@ -15,6 +15,8 @@ public class Endpoint {
     private String method;
     private String status;
     private int duration;
+    private boolean bugged;
+    private int counter;
 
     @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
@@ -23,14 +25,17 @@ public class Endpoint {
 
     public Endpoint() {}
 
-    public Endpoint(Long id, String path, String method, String status, int duration, App app) {
+    public Endpoint(Long id, String path, String method, String status, int duration, boolean bugged, int counter, App app) {
         this.id = id;
         this.path = path;
         this.method = method;
         this.status = status;
         this.duration = duration;
+        this.bugged = bugged;
+        this.counter = counter;
         this.app = app;
     }
+
 
     public Long getId() {
         return id;
@@ -50,6 +55,14 @@ public class Endpoint {
 
     public int getDuration() {
         return duration;
+    }
+
+    public boolean getBugged() {
+        return bugged;
+    }
+
+    public int getCounter() {
+        return counter;
     }
 
     public App getApp() {
@@ -75,6 +88,14 @@ public class Endpoint {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public void setBugged(boolean bugged) {
+        this.bugged = bugged;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 
     public void setApp(App app) {
