@@ -59,7 +59,6 @@ export interface PeriodicElement {
 export class DashboardPageComponent implements OnInit {
 
   apps: App[] = []
-  // dataSource = this.apps;
 
   displayedColumns: string[] = ['id', 'name', 'status', 'seconds']
   dataSource = new MatTableDataSource(this.apps)
