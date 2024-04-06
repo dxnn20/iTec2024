@@ -58,6 +58,17 @@ tr.example-element-row:not(.example-expanded-row):active {
   border-radius: 50px;
 }
 
+.addButton{
+  display: flex;
+  padding: 3vh;
+  justify-content: left !important;
+  font-size: 0.6rem;
+  font-weight: bold;
+  margin: auto;
+  border-radius: 50px;
+
+}
+
 .addButton p{
   display: flex;
   justify-content: center;
@@ -78,14 +89,12 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 .header{
-  min-width: 250px;
-  width: 20vw;
-  padding: 1vh;
+  width: 100%;
+  padding: 0.2vh;
   margin: 3vh;
   display: flex;
-  flex-direction: row;
   border-radius: 50px;
-  justify-content: space-between;
+  justify-content: left;
   background-color: #2c3e50;
 }
 

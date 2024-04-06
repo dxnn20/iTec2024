@@ -4,7 +4,6 @@ import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {HttpClient} from "@angular/common/http";
 import {SecurityService} from "../../security/security.service";
-import {App} from "../../App";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatButton} from "@angular/material/button";
 import {NgForOf} from "@angular/common";
@@ -21,8 +20,9 @@ import {
   MatRowDef,
   MatTable
 } from "@angular/material/table";
-import {DialogComponent} from "../../pages-components/dialog/dialog.component";
+import {AddEndPointDialogComponent} from "../../pages-components/add-end-point-dialog/add-end-point-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {windowWhen} from "rxjs";
 
 @Component({
   selector: 'app-add-endpoint',
@@ -60,7 +60,7 @@ export class AddEndpointComponent {
   protected endPoint: Endpoint = new Endpoint()
   displayedColumns: string[] =[ 'path', 'method', 'duration'];
 
-  constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog, ) {
+  constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog ) {
     this.refresh()
   }
 
@@ -71,5 +71,14 @@ export class AddEndpointComponent {
         console.log(this.dataSource )
       }
     )
+  }
+
+  openPopup() {
+    console.log(window.document.location)
+    const dialogRef = this.dialog.open(AddEndPointDialogComponent, this.route.snapshot.params['id']);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }

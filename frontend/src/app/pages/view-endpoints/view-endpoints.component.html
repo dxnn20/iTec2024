@@ -4,7 +4,6 @@
 
   <div class="content">
     <div class="header">
-      <button mat-raised-button class="addButton" (click)="openPopup()"><p>+</p>Add endpoint</button>
       <button mat-raised-button class="addButton" (click)="refresh()">
         <p><mat-icon>reply</mat-icon></p>Refresh
       </button>
@@ -27,7 +26,7 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="open(row)"></tr>
       </table>
     </div>
   </div>
