@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Dialog Title</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="App name" [(ngModel)]="this.app.name">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="button-container">
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button mat-button (click)="submitDialog()">Submit</button>
+  </div>
+</mat-dialog-actions>
