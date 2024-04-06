@@ -4,11 +4,12 @@ import {MatCardModule} from '@angular/material/card';
 import {HistoryBarComponent} from "../history-bar/history-bar.component";
 import {App} from "../../App";
 import {MatIcon} from "@angular/material/icon";
+import {NgClass} from "@angular/common";
 
 @Component({
   selector: 'app-app-card',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, HistoryBarComponent, MatIcon],
+  imports: [MatCardModule, MatButtonModule, HistoryBarComponent, MatIcon, NgClass],
   templateUrl: './app-card.component.html',
   styleUrl: './app-card.component.scss'
 })
@@ -37,6 +38,31 @@ export class AppCardComponent {
       }
     }
   }
+
+  getStatusColorClass(): string {
+    switch (this.status) {
+      case 'ok':
+        return 'status-ok';
+      case 'unstable':
+        return 'status-unstable';
+      case 'down':
+        return 'status-down';
+      default:
+        return 'status-unknown'; // Handle any unexpected status
+    }
+  }
+
+  getPercentageUp(): string {
+    if (!this.app.status) {
+      return '0'; // If no status history, return 0%
+    }
+    const statusArray = this.app.status.split('');
+    const upCount = statusArray.filter(char => char.toLowerCase() === 'o').length;
+    const totalCount = statusArray.length;
+    const percentage = (upCount / totalCount) * 100;
+    return percentage.toFixed(2);
+  }
+
 
   handleCardClick() {
     console.log('Card clicked: ', this.app);

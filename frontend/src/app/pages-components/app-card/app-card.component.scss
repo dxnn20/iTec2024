@@ -13,6 +13,25 @@
   justify-content: space-between;
   align-items: center;
 }
+.status-info {
+  margin-left: 25px;
+}
+
+.percentage-container {
+  display: inline-block;
+  padding: 8px 16px; /* Adjust padding as needed */
+  border-radius: 20px; /* Adjust border radius to create a round shape */
+  background-color: #333; /* Darker background color */
+  color: #fff; /* Text color */
+  font-weight: bold;
+  font-size: 14px;
+  cursor: default; /* Use default cursor to indicate non-clickable */
+}
+
+.percentage-container p {
+  margin: 0; /* Remove default margin */
+}
+
 
 .logo-title-container {
   margin-left: 25px;
@@ -45,3 +64,20 @@
 .details-button {
   /* Optional: Add specific styles for the button */
 }
+
+.status-ok {
+  color: #03dfa2;
+}
+
+.status-unstable {
+  color: #ffb84d;
+}
+
+.status-down {
+  color: #ff0060;
+}
+
+.status-unknown {
+  color: grey; /* Default color for unknown status */
+}
+

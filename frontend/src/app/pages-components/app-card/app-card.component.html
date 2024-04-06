@@ -4,10 +4,16 @@
       <div class="logo-title-container">
         <mat-card-title>{{ app.name }}</mat-card-title>
       </div>
+      <div class="status-info">
+        <div class="percentage-container">
+          <p>Percentage Up: {{ getPercentageUp() }}%</p>
+        </div>
+      </div>
     </div>
     <div class="status">
-      <mat-card-subtitle>Status: {{ status }}</mat-card-subtitle>
+      <mat-card-subtitle [ngClass]="getStatusColorClass()">Status: {{ status }}</mat-card-subtitle>
     </div>
+
   </mat-card-header>
   <mat-card-content class="card-content">
     <div class="row-container">

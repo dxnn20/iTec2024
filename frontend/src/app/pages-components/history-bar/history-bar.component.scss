@@ -2,13 +2,13 @@
   display: flex;
   flex-wrap: wrap; /* Allow columns to wrap to the next row */
   max-height: 12vh;
-
+  align-items: baseline;
 }
 
 .status-column {
   width: 7px; /* Set width of each column */
   height: 30px; /* Set height of each column */
-  margin-right: 5px; /* Add spacing between columns */
+  margin-right: 0.2vw; /* Add spacing between columns */
   border-radius: 50px;
 }
 
@@ -19,9 +19,11 @@
 
 .unstable {
   background-color: #ffb84d;
+  height: 2.25vh;
 }
 
 .down {
   background-color: #ff0060;
+  height: 1.75vh;
 }
 
