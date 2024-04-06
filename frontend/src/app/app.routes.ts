@@ -7,6 +7,7 @@ import {SignUpPageComponent} from "./pages/sign-up-page/sign-up-page.component";
 import {isAdminGuard} from "./security/auth-guard.service";
 import {DashboardPageComponent} from "./pages/dashboard-page/dashboard-page.component";
 import {AddEndpointComponent} from "./pages/add-endpoint/add-endpoint.component";
+import {ViewEndpointsComponent} from "./pages/view-endpoints/view-endpoints.component";
 
 export const routes: Routes = [
   {path: '' , component: HomePageComponent},
@@ -16,4 +17,5 @@ export const routes: Routes = [
   {path: 'dashboard-page' , component: DashboardPageComponent, canActivate: [isAdminGuard]},
   {path: 'app-add-endpoint/:id' , component: AddEndpointComponent, canActivate: [isAdminGuard]},
   {path: 'app-add-endpoint/' , component: AddEndpointComponent, canActivate: [isAdminGuard]},
+  {path: 'view-endpoints/:id' , component: ViewEndpointsComponent},
 ];
