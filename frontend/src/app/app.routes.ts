@@ -19,5 +19,5 @@ export const routes: Routes = [
   {path: 'app-add-endpoint/:id' , component: AddEndpointComponent, canActivate: [isAdminGuard]},
   {path: 'app-add-endpoint/' , component: AddEndpointComponent, canActivate: [isAdminGuard]},
   {path: 'view-endpoints/:id' , component: ViewEndpointsComponent},
-  {path: 'reports-page', component: ReportsPageComponent}
+  {path: 'reports-page', component: ReportsPageComponent, canActivate: [isAdminGuard]},
 ];

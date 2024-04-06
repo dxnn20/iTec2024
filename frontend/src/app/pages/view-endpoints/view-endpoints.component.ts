@@ -16,6 +16,7 @@ import {SecurityService} from "../../security/security.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {EndPointViewComponent} from "../../pages-components/end-point-view/end-point-view.component";
+import {interval} from "rxjs";
 
 @Component({
   selector: 'app-view-endpoints',
@@ -43,6 +44,12 @@ export class ViewEndpointsComponent {
 
   protected endPoint: Endpoint = new Endpoint()
   displayedColumns: string[] =[ 'path', 'method', 'duration', 'actions'];
+
+  ngOnInit() {
+    interval(1000).subscribe(() => {
+      this.refresh()
+    })
+  }
 
   constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog ) {
     this.refresh()

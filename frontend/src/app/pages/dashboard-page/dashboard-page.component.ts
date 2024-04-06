@@ -17,6 +17,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../../pages-components/dialog/dialog.component";
+import {interval} from "rxjs";
 
 export interface PeriodicElement {
   name: string;
@@ -64,10 +65,15 @@ export class DashboardPageComponent implements OnInit {
   dataSource = new MatTableDataSource(this.apps)
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private securityService: SecurityService, protected dialog: MatDialog, private router: Router) {
+    interval(1000).subscribe(() => {
+      this.refresh()
+    })
   }
 
   ngOnInit() {
-    this.refresh()
+    interval(1000).subscribe(() => {
+      this.refresh()
+    })
   }
 
   // protected readonly apps = apps;
@@ -89,13 +95,12 @@ export class DashboardPageComponent implements OnInit {
           if (data[i].status == null)
             data[i].status = "DOWN"
 
-        console.log(data)
       }
     )
   }
 
   onClick(app: App) {
     console.log(app)
-      this.router.navigateByUrl('/app-add-endpoint/' + app.id).then(r => console.log(r))
+    this.router.navigateByUrl('/app-add-endpoint/' + app.id).then(r => console.log(r))
   }
 }

@@ -4,7 +4,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {HttpClient} from "@angular/common/http";
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import {interval, throwError} from 'rxjs';
 import {SecurityService} from "../../security/security.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatButton, MatIconButton} from "@angular/material/button";
@@ -65,6 +65,12 @@ export class AddEndpointComponent {
 
   constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog ) {
     this.refresh()
+  }
+
+  ngOnInit(){
+    interval(1000).subscribe(() => {
+      this.refresh()
+    })
   }
 
   refresh() {
