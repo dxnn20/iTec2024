@@ -1,7 +1,7 @@
+
 table {
-  max-width: 50wv;
-  margin:auto;
-  display: flex;
+  width: 50wv;
+  flex-direction: column;
 }
 
 tr.example-detail-row {
@@ -22,7 +22,6 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-detail {
   overflow: hidden;
-  display: flex;
 }
 
 .example-element-diagram {
@@ -36,7 +35,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-symbol {
   font-weight: bold;
-  font-size: 40px;
+  font-size: 2rem;
   line-height: normal;
 }
 
@@ -48,7 +47,58 @@ tr.example-element-row:not(.example-expanded-row):active {
   opacity: 0.5;
 }
 
-.container{
-  width:100%;
+.addButton{
   display: flex;
+  padding: 3vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.6rem;
+  font-weight: bold;
+  margin: auto;
+  border-radius: 50px;
+}
+
+.addButton p{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: auto;
+  border-radius: 50px;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+.header{
+  min-width: 300px;
+  width: 20vw;
+  padding: 3vh;
+  margin: 3vh;
+  display: flex;
+  border-radius: 50px;
+  justify-content: space-between;
+  background-color: #2c3e50;
+}
+
+.table-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 65%;
+  height: 100vh;
 }

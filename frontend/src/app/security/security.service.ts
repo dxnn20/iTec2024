@@ -9,6 +9,9 @@ export class SecurityService{
   private user: User | undefined;
   private search: string;
 
+  constructor() {
+  }
+
   setUser(user: User) {
     this.user = user;
     console.log(this.user);

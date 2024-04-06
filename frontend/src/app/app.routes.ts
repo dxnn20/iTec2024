@@ -8,10 +8,9 @@ import {isAdminGuard} from "./security/auth-guard.service";
 import {DashboardPageComponent} from "./pages/dashboard-page/dashboard-page.component";
 
 export const routes: Routes = [
-  {path: '' , component: LoginPageComponent},
+  {path: '' , component: HomePageComponent},
   {path: 'home-page' , component: HomePageComponent},
   {path: 'login-page' , component: LoginPageComponent},
   {path: 'sign-up-page' , component: SignUpPageComponent},
   {path: 'dashboard-page' , component: DashboardPageComponent, canActivate: [isAdminGuard]},
-
 ];

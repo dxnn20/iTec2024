@@ -6,12 +6,13 @@ import {HistoryBarComponent} from "./pages-components/history-bar/history-bar.co
 
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {LoginPageComponent} from "./pages/login-page/login-page.component";
+import {NavbarComponent} from "./pages-components/navbar/navbar.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppCardComponent,HistoryBarComponent],
+  imports: [RouterOutlet, AppCardComponent, HistoryBarComponent, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
