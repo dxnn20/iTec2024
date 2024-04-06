@@ -4,10 +4,13 @@ import com.example.entities.App;
 import com.example.entities.Endpoint;
 import com.example.repositories.AppRepository;
 import com.example.repositories.EndpointRepository;
+import com.example.security.entities.User;
+import com.example.security.entities.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +23,9 @@ public class EndpointController {
 
     @Autowired
     AppRepository appRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     // CREATE
     @PostMapping(path = "/createByAppId/{id}")
@@ -68,6 +74,25 @@ public class EndpointController {
         App app=optionalApp.get();
 
         return app.getEndpoints();
+    }
+
+    @GetMapping(path="/getAllBuggedByUserId/{id}")
+    public List<Endpoint> getAllBuggedByUserId(@PathVariable Long id)
+    {
+        Optional<User> optionalUser=userRepository.findById(id);
+        User user=optionalUser.get();
+        List<App>apps= user.getApps();
+        List<Endpoint> returnedEndpoints=new ArrayList<>();
+        for (int i=0;i<apps.size();i++)
+        {
+            App app=apps.get(i);
+            List<Endpoint> endpoints=app.getEndpoints();
+            for (int j=0;j<endpoints.size();j++)
+            {
+                if (endpoints.get(j).getBugged()==true) returnedEndpoints.addLast(endpoints.get(j));
+            }
+        }
+        return returnedEndpoints;
     }
 
 
