@@ -40,7 +40,7 @@ public class EndpointController {
         return endpointRepository.findById(id);
     }
 
-    @GetMapping(path="/getAllByUserId/{id}")
+    @GetMapping(path="/getAllByAppId/{id}")
     public List<Endpoint> getAllByUserId(@PathVariable Long id)
     {
         Optional<App> optionalApp=appRepository.findById(id);
