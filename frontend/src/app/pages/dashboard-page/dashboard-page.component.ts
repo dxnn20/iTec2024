@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {App} from "../../App";
 import {SecurityService} from "../../security/security.service";
 import {animate, state, style, transition, trigger} from '@angular/animations';
@@ -64,21 +64,11 @@ export class DashboardPageComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'status', 'seconds']
   dataSource = new MatTableDataSource(this.apps)
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private securityService: SecurityService,public dialog: MatDialog) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private securityService: SecurityService, public dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {
-    this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
-      (data: any) => {
-        this.dataSource = data
-
-        for (let i = 0; i < data.length; i++)
-          if (data[i].status == null)
-            data[i].status = "DOWN"
-
-        console.log(data)
-      }
-    )
+    this.refresh()
   }
 
   // protected readonly apps = apps;
@@ -91,7 +81,8 @@ export class DashboardPageComponent implements OnInit {
   }
 
   refresh() {
-    this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
+    // this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
+    this.http.get("http://localhost:1201/app/getAllByUserId/" + 1).subscribe(
       (data: any) => {
         this.dataSource = data
 
@@ -102,5 +93,10 @@ export class DashboardPageComponent implements OnInit {
         console.log(data)
       }
     )
+  }
+
+  onClick(app: App) {
+    console.log(app)
+      this.router.navigateByUrl('/app-add-endpoint/' + app.id).then(r => console.log(r))
   }
 }

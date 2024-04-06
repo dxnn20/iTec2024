@@ -1,8 +1,13 @@
 <h2 mat-dialog-title>Dialog Title</h2>
 <mat-dialog-content>
-  <mat-form-field>
-    <input matInput placeholder="App name" [(ngModel)]="this.app.name">
-  </mat-form-field>
+  <div class="input-container">
+    <mat-form-field>
+      <input matInput placeholder="App name" [(ngModel)]="this.app.name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Seconds" [(ngModel)]="this.app.seconds">
+    </mat-form-field>
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
   <div class="button-container">
