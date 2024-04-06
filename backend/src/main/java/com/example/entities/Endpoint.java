@@ -14,6 +14,7 @@ public class Endpoint {
     private String path;
     private String method;
     private String status;
+    private int duration;
 
     @JsonIgnore
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
@@ -22,14 +23,14 @@ public class Endpoint {
 
     public Endpoint() {}
 
-    public Endpoint(Long id, String path, String method, String status, App app) {
+    public Endpoint(Long id, String path, String method, String status, int duration, App app) {
         this.id = id;
         this.path = path;
         this.method = method;
         this.status = status;
+        this.duration = duration;
         this.app = app;
     }
-
 
     public Long getId() {
         return id;
@@ -45,6 +46,10 @@ public class Endpoint {
 
     public String getStatus() {
         return status;
+    }
+
+    public int getDuration() {
+        return duration;
     }
 
     public App getApp() {
@@ -66,6 +71,10 @@ public class Endpoint {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public void setApp(App app) {

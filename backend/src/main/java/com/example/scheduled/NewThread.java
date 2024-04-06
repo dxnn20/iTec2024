@@ -43,7 +43,7 @@ public class NewThread extends Thread{
         int seconds=localTime.getSecond()+localTime.getMinute()*60+localTime.getHour()*60*60;
         for (int i=0;i<apps.size();i++)
         {
-            if (seconds/apps.get(i).getSeconds()==0)
+            if (apps.get(i).getSeconds()!=0) if (seconds/apps.get(i).getSeconds()==0)
             {
                 List<Endpoint> endpoints=apps.get(i).getEndpoints();
                 for (int j=0;j<endpoints.size();j++)
