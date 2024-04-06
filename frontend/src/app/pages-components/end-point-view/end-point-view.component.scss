@@ -28,28 +28,26 @@
 .status-container p{
   margin: 0;
   padding: 5px;
-
 }
 
 .Ok {
-  background-color: green;
+  background-color: #03dfa2;
 }
 
 .Unstable {
-  background-color: yellow;
+  background-color: #ffb84d;
 }
 
 .Down {
-  background-color: red;
+  background-color: #ff0060;
 }
 
 .bar-container{
-  background-color: #c0baba;
-  border: 1px solid #e0e0e0;
   border-radius: 5px;
   display: flex;
   padding: 0 1.5px;
   justify-content: left;
   align-items: center;
   margin: 10px;
+  overflow-x: auto;
 }

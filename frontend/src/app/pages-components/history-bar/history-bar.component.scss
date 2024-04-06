@@ -1,19 +1,30 @@
-.history-bar {
+.history-bar-container {
   display: flex;
   max-height: 12vh;
   align-items: baseline;
+  flex-direction: column;
+}
+
+.history-bar {
+  display: flex;
+  width: 100%;
+  max-height: 12vh;
+  align-items: baseline;
+  flex-direction: row;
+  overflow-x: auto;
 }
 
 .status-column {
-  width: 7px; /* Set width of each column */
-  height: 30px; /* Set height of each column */
-  margin-right: 0.1vw; /* Add spacing between columns */
+  display: flex;
+  flex-direction: row;
+  width: 7px;
+  height: 30px;
+  margin-right: 0.1vw;
   border-radius: 50px;
   max-width: 7px;
   min-width: 2px;
 }
 
-/* Define styles for different statuses */
 .g {
   background-color: #03dfa2;
   width: 7px;

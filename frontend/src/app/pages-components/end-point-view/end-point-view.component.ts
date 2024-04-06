@@ -50,15 +50,12 @@ export class EndPointViewComponent {
     }
     switch (this.endpoint.status.slice(-1)) {
       case "g":
-        console.log('status is ok')
         return "Ok";
       case 'y':
-        console.log('status is unstable')
         return 'Unstable';
       case 'r':
       default:
         return 'Down';
-
     }
   }
 

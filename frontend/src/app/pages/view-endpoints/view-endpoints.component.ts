@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {
   MatCell,
   MatCellDef,
@@ -32,7 +32,8 @@ import {EndPointViewComponent} from "../../pages-components/end-point-view/end-p
     MatRow,
     MatRowDef,
     MatTable,
-    MatHeaderCellDef
+    MatHeaderCellDef,
+    MatIconButton
   ],
   templateUrl: './view-endpoints.component.html',
   styleUrl: './view-endpoints.component.scss'
@@ -41,7 +42,7 @@ export class ViewEndpointsComponent {
   dataSource : Endpoint[] = []
 
   protected endPoint: Endpoint = new Endpoint()
-  displayedColumns: string[] =[ 'path', 'method', 'duration'];
+  displayedColumns: string[] =[ 'path', 'method', 'duration', 'actions'];
 
   constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog ) {
     this.refresh()
@@ -51,19 +52,28 @@ export class ViewEndpointsComponent {
     this.http.get('http://localhost:1201/endpoint/getAllByAppId/' + this.route.snapshot.params['id']).subscribe(
       (data: any) => {
         this.dataSource = data;
-        console.log(this.dataSource )
       }
     )
   }
 
   open( endpoint: Endpoint ): void {
-    console.log(window.document.location)
     const dialogRef = this.dialog.open(EndPointViewComponent, {
       data: endpoint}
     );
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
+  }
+
+  onDeleteEndpoint(element: Endpoint) {
+    this.http.delete('http://localhost:1201/endpoint/delete/' + element.id).subscribe(
+      (data: any) => {
+        this.refresh()
+      }
+    )
+  }
+
+  report(row: Endpoint) {
+    this.http.post('http://localhost:1201/endpoint/report/' + row.id, {}).subscribe()
   }
 }

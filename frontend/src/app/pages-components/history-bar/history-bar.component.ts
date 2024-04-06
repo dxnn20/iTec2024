@@ -17,7 +17,6 @@ export class HistoryBarComponent {
   statusArray: string[] = []
 
   ngOnInit() {
-    console.log(this.statusString)
   }
 
   getStatuses(): (string[]) {

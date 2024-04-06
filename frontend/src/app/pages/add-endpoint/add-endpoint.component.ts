@@ -7,7 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import {SecurityService} from "../../security/security.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {NgForOf} from "@angular/common";
 import {Endpoint} from "../../security/endpoint";
 import {FormsModule} from "@angular/forms";
@@ -50,7 +50,8 @@ import {windowWhen} from "rxjs";
     MatRowDef,
     MatHeaderRowDef,
     MatHeaderCellDef,
-    MatCellDef
+    MatCellDef,
+    MatIconButton
   ],
   templateUrl: './add-endpoint.component.html',
   styleUrl: './add-endpoint.component.scss'
