@@ -14,10 +14,11 @@ class AuthGuard {
   }
 }
 
-  export const isAdminGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-    if(!inject(SecurityService).isAuthenticated()) {
-      return inject(Router).parseUrl('/login-page');
-    }
+export const isAdminGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
 
-    return inject(AuthGuard).canActivate(route, state)
+  if (!inject(SecurityService).isAuthenticated()) {
+    return inject(Router).parseUrl('/login-page');
+  }
+
+  return inject(AuthGuard).canActivate(route, state)
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {App} from "../../App";
 import {SecurityService} from "../../security/security.service";
 import {animate, state, style, transition, trigger} from '@angular/animations';
@@ -15,6 +15,8 @@ import {
 } from "@angular/material/table";
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatDialog} from "@angular/material/dialog";
+import {DialogComponent} from "../../pages-components/dialog/dialog.component";
 
 export interface PeriodicElement {
   name: string;
@@ -22,19 +24,6 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-//   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-//   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-//   {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-//   {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-//   {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-//   {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-//   {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-//   {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-//   {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-// ];
 
 @Component({
   selector: 'app-dashboard-page',
@@ -54,7 +43,8 @@ export interface PeriodicElement {
     MatHeaderCellDef,
     MatIconButton,
     MatIconButton,
-    MatButton
+    MatButton,
+    DialogComponent
   ],
   animations: [
     trigger('detailExpand', [
@@ -69,28 +59,43 @@ export interface PeriodicElement {
 export class DashboardPageComponent implements OnInit {
 
   apps: App[] = []
-  // dataSource = this.apps;
 
-  displayedColumns: string[] = ['id', 'name', 'status', 'seconds'];
-  dataSource=new MatTableDataSource(this.apps);
-  constructor(private http: HttpClient, private route: ActivatedRoute, private securityService: SecurityService) {
+  displayedColumns: string[] = ['id', 'name', 'status', 'seconds']
+  dataSource = new MatTableDataSource(this.apps)
+
+  constructor(private http: HttpClient, private route: ActivatedRoute, private securityService: SecurityService, protected dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {
-    this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
+    this.refresh()
+  }
+
+  // protected readonly apps = apps;
+  addApp(): void {
+    const dialogRef = this.dialog.open(DialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  refresh() {
+    // this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
+    this.http.get("http://localhost:1201/app/getAllByUserId/" + 1).subscribe(
       (data: any) => {
-        this.dataSource=data
+        this.dataSource = data
+
+        for (let i = 0; i < data.length; i++)
+          if (data[i].status == null)
+            data[i].status = "DOWN"
+
         console.log(data)
-        // if (data != null) {
-        //   console.log(data)
-        //   this.apps = data
-        //   this.dataSource=data;
-        // } else
-        //   alert("No data found")
       }
     )
   }
 
-  // protected readonly apps = apps;
+  onClick(app: App) {
+    console.log(app)
+      this.router.navigateByUrl('/app-add-endpoint/' + app.id).then(r => console.log(r))
+  }
 }
-
