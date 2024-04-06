@@ -23,6 +23,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 15px;
+  padding: 8px 12px; /* Increased padding for better spacing */
+  font-weight: bold; /* Make the font bold for better visibility */
+  color: #ffffff; /* Text color (white) for better contrast */
+  margin-bottom: 15px;
 }
 
 .status-container p{
@@ -50,4 +54,27 @@
   align-items: center;
   margin: 10px;
   overflow-x: auto;
+}
+
+.status-info {
+  display:flex;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+.percentage-container {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px; /* Adjust padding as needed */
+  border-radius: 20px; /* Adjust border radius to create a round shape */
+  background-color: #34495e; /* Darker background color */
+  color: #fff; /* Text color */
+  font-weight: bold;
+  font-size: 14px;
+  cursor: default; /* Use default cursor to indicate non-clickable */
+}
+
+.percentage-container p {
+  margin-top: 12px;
+  display: flex;
 }

@@ -59,4 +59,14 @@ export class EndPointViewComponent {
     }
   }
 
+  getPercentageUp(): string {
+    if (!this.endpoint.status) {
+      return '0'; // If no status history, return 0%
+    }
+    const statusArray = this.endpoint.status.split('');
+    const upCount = statusArray.filter(char => char.toLowerCase() === 'g').length;
+    const totalCount = statusArray.length;
+    const percentage = (upCount / totalCount) * 100;
+    return percentage.toFixed(2);
+  }
 }
