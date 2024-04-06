@@ -13,6 +13,7 @@ public class Endpoint {
 
     private String path;
     private String method;
+    @Column(name="status", length = 50000)
     private String status;
     private int duration;
     private boolean bugged;
