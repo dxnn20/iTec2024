@@ -15,6 +15,7 @@ import {HttpClient} from "@angular/common/http";
 import {SecurityService} from "../../security/security.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
+import {EndPointViewComponent} from "../../pages-components/end-point-view/end-point-view.component";
 
 @Component({
   selector: 'app-view-endpoints',
@@ -53,5 +54,16 @@ export class ViewEndpointsComponent {
         console.log(this.dataSource )
       }
     )
+  }
+
+  open( endpoint: Endpoint ): void {
+    console.log(window.document.location)
+    const dialogRef = this.dialog.open(EndPointViewComponent, {
+      data: endpoint}
+    );
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 }
