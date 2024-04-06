@@ -10,10 +10,11 @@
         </div>
       </div>
     </div>
+
     <div class="status">
       <mat-card-subtitle [ngClass]="getStatusColorClass()">Status: {{ status }}</mat-card-subtitle>
     </div>
-
+    <button class="report-bug-button" (click)="reportBug()">Report a Bug</button>
   </mat-card-header>
   <mat-card-content class="card-content">
     <div class="row-container">

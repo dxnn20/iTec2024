@@ -6,24 +6,29 @@
 }
 
 .status-column {
-  width: 7px; /* Set width of each column */
-  height: 30px; /* Set height of each column */
-  margin-right: 0.2vw; /* Add spacing between columns */
+  width: 100%;
+  height: 30px;
+  margin-right: 0.1vw;
   border-radius: 50px;
+  max-width: 7px;
+  min-width: 2px;
 }
 
 /* Define styles for different statuses */
 .g {
   background-color: #03dfa2;
+  width: 7px;
 }
 
 .y {
   background-color: #ffb84d;
   height: 2.25vh;
+  width: 7px;
 }
 
 .r {
   background-color: #ff0060;
   height: 1.75vh;
+  width: 7px;
 }
 

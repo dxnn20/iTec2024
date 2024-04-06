@@ -21,7 +21,7 @@
   display: inline-block;
   padding: 8px 16px; /* Adjust padding as needed */
   border-radius: 20px; /* Adjust border radius to create a round shape */
-  background-color: #333; /* Darker background color */
+  background-color: #34495e; /* Darker background color */
   color: #fff; /* Text color */
   font-weight: bold;
   font-size: 14px;
@@ -39,6 +39,9 @@
 
 .status {
   margin-left: auto;
+  background-color: #34495e;
+  padding: 8px 16px;
+  border-radius: 20px;
 }
 
 .card-content {
@@ -57,7 +60,7 @@
 }
 
 .history-bar-container {
-  flex: 1; /* Allow history bar to grow and fill remaining space */
+  flex: 1;
   margin-right: 10px; /* Add spacing between history bar and button */
 }
 
@@ -78,6 +81,25 @@
 }
 
 .status-unknown {
-  color: grey; /* Default color for unknown status */
+  color: grey;
 }
+
+.report-bug-button {
+  background-color: #ff0060;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.report-bug-button:hover {
+  background-color: #d63026;
+}
+
+.status {
+  margin-left: auto;
+}
+
 
