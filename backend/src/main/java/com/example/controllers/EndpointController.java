@@ -70,4 +70,12 @@ public class EndpointController {
         return app.getEndpoints();
     }
 
+
+    // DELETE
+    @DeleteMapping(path="/deleteById/{id}")
+    public void deleteById(@PathVariable Long id)
+    {
+        endpointRepository.deleteById(id);
+    }
+
 }
