@@ -1,12 +1,23 @@
-.history-bar {
+.history-bar-container {
   display: flex;
-  flex-wrap: wrap; /* Allow columns to wrap to the next row */
   max-height: 12vh;
   align-items: baseline;
+  flex-direction: column;
+}
+
+.history-bar {
+  display: flex;
+  width: 100%;
+  max-height: 12vh;
+  align-items: baseline;
+  flex-direction: row;
+  overflow-x: auto;
 }
 
 .status-column {
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  width: 7px;
   height: 30px;
   margin-right: 0.1vw;
   border-radius: 50px;
@@ -14,7 +25,6 @@
   min-width: 2px;
 }
 
-/* Define styles for different statuses */
 .g {
   background-color: #03dfa2;
   width: 7px;

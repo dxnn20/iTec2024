@@ -71,8 +71,7 @@ export class HomePageComponent {
   }
 
   refresh() {
-    // this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
-    this.http.get("http://localhost:1201/app/getAllByUserId/" + 1).subscribe(
+     this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
       (data: any) => {
         this.dataSource = data
 

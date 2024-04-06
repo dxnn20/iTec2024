@@ -13,6 +13,8 @@ import {ActivatedRoute} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {HistoryBarComponent} from "../history-bar/history-bar.component";
 import {Endpoint} from "../../security/endpoint";
+import {MatDivider} from "@angular/material/divider";
+import {last} from "rxjs";
 
 @Component({
   selector: 'app-end-point-view',
@@ -23,21 +25,38 @@ import {Endpoint} from "../../security/endpoint";
     MatDialogActions,
     MatButton,
     MatDialogClose,
-    HistoryBarComponent
+    HistoryBarComponent,
+    MatDivider
   ],
   templateUrl: './end-point-view.component.html',
   styleUrl: './end-point-view.component.scss'
 })
 export class EndPointViewComponent {
-  endpoint : Endpoint = new Endpoint()
+  endpoint: Endpoint = new Endpoint()
+  statusWord: string
 
   constructor(@Inject(MAT_DIALOG_DATA) data: Endpoint) {
-    this.endpoint= data;
+    this.endpoint = data;
+    this.statusWord = this.getSimpleStatus()
   }
 
   ngOnInit() {
-    console.log(this.endpoint.status)
   }
 
+  getSimpleStatus(): string {
+    if (this.endpoint.status == null) {
+      console.log('status is null')
+      return 'Down';
+    }
+    switch (this.endpoint.status.slice(-1)) {
+      case "g":
+        return "Ok";
+      case 'y':
+        return 'Unstable';
+      case 'r':
+      default:
+        return 'Down';
+    }
+  }
 
 }
