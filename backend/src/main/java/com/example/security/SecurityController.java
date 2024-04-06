@@ -2,6 +2,7 @@ package com.example.security;
 
 import com.example.security.entities.User;
 import com.example.security.entities.UserRepository;
+import com.example.security.entities.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ public class SecurityController {
     public void securitySignUp(@RequestBody User user)
     {
         System.out.println(user.toString());
+        user.setPassword(UserService.hashPassword(user.getPassword()));
         userRepository.save(user);
 //        return "not logged in";
     }

@@ -92,6 +92,7 @@ public class EndpointController {
                 if (endpoints.get(j).getBugged()==true) returnedEndpoints.addLast(endpoints.get(j));
             }
         }
+        System.out.println(returnedEndpoints);
         return returnedEndpoints;
     }
 
