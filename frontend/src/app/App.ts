@@ -4,7 +4,7 @@ export class App {
   name: string;
   seconds : number;
   status: string = "DOWN";
-  endpoint: Endpoint[] | undefined;
+  endpoint: Endpoint[] = [];
   id: string;
 
   constructor(name: string = '' , status: string = 'DOWN', endpoint: Endpoint[] = [], id: string = ''){

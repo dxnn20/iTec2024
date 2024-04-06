@@ -2,31 +2,40 @@
   <div class="content">
     <div class="header">
       <h1>Endpoints</h1>
-
+      <h1 *ngFor="let endpoint of this.app.endpoint">{{ endpoint.path }}</h1>
       <div class="existing-endpoints">
-        <div ></div>
+        <div></div>
       </div>
 
     </div>
 
     <div class="form">
-      <form>
+      <form name="endpointForm">
         <p>
           <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
-            <input matInput placeholder="Placeholder">
+            <mat-label>Path</mat-label>
+            <input matInput placeholder="endpoint" [(ngModel)]="this.endPoint.path" name="Path">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
+            <mat-hint>A link!</mat-hint>
           </mat-form-field>
         </p>
         <p>
           <mat-form-field appearance="outline">
-            <mat-label>Outline form field</mat-label>
-            <input matInput placeholder="Placeholder">
+            <mat-label>Method</mat-label>
+            <input matInput placeholder="Method" [(ngModel)]="this.endPoint.method" name="Method">
             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-            <mat-hint>Hint</mat-hint>
+            <mat-hint>What kind of request?</mat-hint>
           </mat-form-field>
         </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Duration</mat-label>
+            <input matInput placeholder="Duration" [(ngModel)]="this.endPoint.duration" name="Duration">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+            <mat-hint>What's the duration?</mat-hint>
+          </mat-form-field>
+        </p>
+        <button mat-raised-button (click)="submit()">Submit</button>
       </form>
     </div>
   </div>
