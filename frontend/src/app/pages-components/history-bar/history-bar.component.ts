@@ -13,10 +13,19 @@ import {NgClass, NgForOf} from "@angular/common";
 })
 export class HistoryBarComponent {
   @Input() statusString: string = ''; // Input string containing statuses
+  simpleStatus: string = 'down'
+  statusArray: string[] = []
 
-  getStatuses(): string[] {
-    const statusArray = this.statusString.split('');
-    return statusArray.map(char => {
+  getStatuses(): (string[]) {
+    if(this.statusString == null) {
+      for (let i = 0; i < 150; i++)
+        this.statusArray[i] = 'down'
+
+      return this.statusArray;
+    }
+    this.statusArray = this.statusString.split('');
+    console.log(this.statusArray);
+    return this.statusArray.map(char => {
       switch (char.toLowerCase()) {
         case 'o':
           return 'ok';
@@ -29,5 +38,13 @@ export class HistoryBarComponent {
       }
     });
   }
+
+  // getSimpleStatus(): (string) {
+  //   if (this.statusString == null) {
+  //     this.simpleStatus = 'down';
+  //     return this.simpleStatus;
+  //   }
+  //   return this.simpleStatus;
+  // }
 }
 

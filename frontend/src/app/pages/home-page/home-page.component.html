@@ -5,9 +5,9 @@
 
   <!-- Position Column -->
   <ng-container matColumnDef="appCard">
-    <th mat-header-cell *matHeaderCellDef> App card </th>
+    <th mat-header-cell *matHeaderCellDef id="header-cell"> <h1>Applications</h1> </th>
     <td mat-cell *matCellDef="let element"> {{element.position}}
-      <app-app-card>
+      <app-app-card [app]="element">
 
       </app-app-card>
     </td>

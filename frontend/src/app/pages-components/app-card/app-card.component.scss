@@ -1,11 +1,11 @@
 .custom-card {
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 .mat-card-header {
   display: flex;
-  justify-content: space-between; /* To push the children to the edges */
-  align-items: center; /* To vertically center align the children */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .left-content {
@@ -13,11 +13,71 @@
   justify-content: space-between;
   align-items: center;
 }
+.status-info {
+  margin-left: 25px;
+}
+
+.percentage-container {
+  display: inline-block;
+  padding: 8px 16px; /* Adjust padding as needed */
+  border-radius: 20px; /* Adjust border radius to create a round shape */
+  background-color: #333; /* Darker background color */
+  color: #fff; /* Text color */
+  font-weight: bold;
+  font-size: 14px;
+  cursor: default; /* Use default cursor to indicate non-clickable */
+}
+
+.percentage-container p {
+  margin: 0; /* Remove default margin */
+}
+
 
 .logo-title-container {
-  margin-left: 25px; /* Add some spacing between the logo and the title */
+  margin-left: 25px;
 }
 
 .status {
-  margin-left: auto; /* Push the status to the right */
+  margin-left: auto;
 }
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the start (top) */
+  align-items: stretch; /* Stretch items horizontally */
+  height: 100%; /* Ensure the card content takes up full height */
+}
+
+.row-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ensure row container takes full width */
+}
+
+.history-bar-container {
+  flex: 1; /* Allow history bar to grow and fill remaining space */
+  margin-right: 10px; /* Add spacing between history bar and button */
+}
+
+.details-button {
+  /* Optional: Add specific styles for the button */
+}
+
+.status-ok {
+  color: #03dfa2;
+}
+
+.status-unstable {
+  color: #ffb84d;
+}
+
+.status-down {
+  color: #ff0060;
+}
+
+.status-unknown {
+  color: grey; /* Default color for unknown status */
+}
+
