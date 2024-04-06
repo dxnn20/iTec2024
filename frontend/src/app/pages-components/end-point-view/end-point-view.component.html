@@ -3,12 +3,28 @@
   <mat-dialog-content>
 
     <div class="container">
+      <div class="header">
+        <h1>{{ endpoint.path }}</h1>
+        <mat-divider/>
+      </div>
+      <div class="info">
+        <div class="info-item">
+          <h3>Method: {{ endpoint.method }}</h3>
+        </div>
 
+        <div class="info-item">
+          <div [class]="getSimpleStatus()" class="status-container">
+            <p> Status: {{ statusWord }}</p>
+          </div>
+        </div>
 
-
+        <div class="info-item">
+          <p> Duration: {{ endpoint.duration }}h</p>
+        </div>
+      </div>
+      <app-history-bar [statusString]="endpoint.status"></app-history-bar>
     </div>
 
-    <app-history-bar [statusString]="endpoint.status"></app-history-bar>
   </mat-dialog-content>
 
   <mat-dialog-actions>

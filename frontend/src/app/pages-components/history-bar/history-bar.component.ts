@@ -17,7 +17,7 @@ export class HistoryBarComponent {
   statusArray: string[] = []
 
   ngOnInit() {
-  console.log(this.statusString)
+    console.log(this.statusString)
   }
 
   getStatuses(): (string[]) {
@@ -27,21 +27,8 @@ export class HistoryBarComponent {
 
       return this.statusArray;
     }
-    //this.statusArray = this.statusString.split('');
+    this.statusArray = this.statusString.split('');
 
-    // console.log(this.statusArray);
-    // return this.statusArray.map(char => {
-    //   switch (char.toLowerCase()) {
-    //     case 'o':
-    //       return 'ok';
-    //     case 'u':
-    //       return 'unstable';
-    //     case 'd':
-    //       return 'down';
-    //     default:
-    //       return 'unknown'; // Handle any unknown characters
-    //   }
-    // });
     return this.statusArray;
   }
 
