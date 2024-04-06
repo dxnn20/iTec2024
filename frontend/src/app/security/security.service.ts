@@ -14,7 +14,6 @@ export class SecurityService{
 
   setUser(user: User) {
     this.user = user;
-    console.log(this.user);
   }
 
   getId(): number | undefined {

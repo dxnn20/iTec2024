@@ -2,11 +2,12 @@ import {Endpoint} from "./security/endpoint";
 
 export class App {
   name: string;
+  seconds : number;
   status: string = "DOWN";
-  endpoint: Endpoint[];
+  endpoint: Endpoint[] | undefined;
   id: string;
 
-  constructor(name: string, status: string, endpoint: Endpoint, id: string) {
+  constructor(name: string = '' , status: string = 'DOWN', endpoint: Endpoint[] = [], id: string = ''){
     this.name = name;
     this.status = status;
     this.endpoint = endpoint;
@@ -21,7 +22,7 @@ export class App {
     return this.status;
   }
 
-  public getEndpoint(): Endpoint[] {
+  public getEndpoint(): Endpoint[] | undefined {
     return this.endpoint;
   }
 }

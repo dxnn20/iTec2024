@@ -39,6 +39,7 @@ export class DialogComponent {
   }
 
   submitDialog(): void {
+    console.log(this.app)
     this.http.post('http://localhost:1201/app/create/' + this.securityService.getId(), this.app).subscribe()
     this.dialogRef.close();
 

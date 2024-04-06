@@ -6,6 +6,7 @@ import {SecurityService} from "./security/security.service";
 import {SignUpPageComponent} from "./pages/sign-up-page/sign-up-page.component";
 import {isAdminGuard} from "./security/auth-guard.service";
 import {DashboardPageComponent} from "./pages/dashboard-page/dashboard-page.component";
+import {AddEndpointComponent} from "./pages/add-endpoint/add-endpoint.component";
 
 export const routes: Routes = [
   {path: '' , component: HomePageComponent},
@@ -13,4 +14,5 @@ export const routes: Routes = [
   {path: 'login-page' , component: LoginPageComponent},
   {path: 'sign-up-page' , component: SignUpPageComponent},
   {path: 'dashboard-page' , component: DashboardPageComponent, canActivate: [isAdminGuard]},
+  {path: 'app-add-endpoint/:id' , component: AddEndpointComponent, canActivate: [isAdminGuard]},
 ];
