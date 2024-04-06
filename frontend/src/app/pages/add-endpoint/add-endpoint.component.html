@@ -1,13 +1,14 @@
 
 
 <div class="container" xmlns="http://www.w3.org/1999/html">
-  <div class="header">
-    <button mat-raised-button class="addButton" ><p>+</p>Add endpoint</button>
-    <button mat-raised-button class="addButton" (click)="refresh()">
-      <p><mat-icon>reply</mat-icon></p>Refresh
-    </button>
-  </div>
+
   <div class="content">
+    <div class="header">
+      <button mat-raised-button class="addButton" (click)="openPopup()"><p>+</p>Add endpoint</button>
+      <button mat-raised-button class="addButton" (click)="refresh()">
+        <p><mat-icon>reply</mat-icon></p>Refresh
+      </button>
+    </div>
     <div class="table-container">
       <table mat-table [dataSource]="this.dataSource" class="mat-elevation-z7">
         <ng-container matColumnDef="path">
