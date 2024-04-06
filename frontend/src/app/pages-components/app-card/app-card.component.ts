@@ -63,6 +63,14 @@ export class AppCardComponent {
     return percentage.toFixed(2);
   }
 
+  reportBug() {
+    // Implement your logic for reporting a bug
+    console.log('Report a Bug clicked:', this.app);
+    // Optionally, you can trigger a dialog or form for bug reporting
+  }
+
+
+
 
   handleCardClick() {
     console.log('Card clicked: ', this.app);

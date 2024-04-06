@@ -3,6 +3,8 @@ import {MatFormField, MatHint, MatLabel, MatSuffix} from "@angular/material/form
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {HttpClient} from "@angular/common/http";
+import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 import {SecurityService} from "../../security/security.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatButton} from "@angular/material/button";
@@ -58,7 +60,7 @@ export class AddEndpointComponent {
   dataSource : Endpoint[] = []
 
   protected endPoint: Endpoint = new Endpoint()
-  displayedColumns: string[] =[ 'path', 'method', 'duration'];
+  displayedColumns: string[] =[ 'path', 'method', 'duration','actions'];
 
   constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog ) {
     this.refresh()
@@ -81,4 +83,32 @@ export class AddEndpointComponent {
       console.log('The dialog was closed');
     });
   }
+
+  deleteEndpoint(endpoint: any) {
+    const endpointId = endpoint.id; // Assuming endpoint has an ID property
+    const deleteUrl = `https://your-backend-api.com/endpoints/${endpointId}`;
+
+    return this.http.delete(deleteUrl).pipe(
+      catchError((error) => {
+        console.error('Error deleting endpoint:', error);
+        return throwError('Something went wrong with endpoint deletion');
+      })
+    );
+  }
+
+  onDeleteEndpoint(endpoint: any) {
+    this.deleteEndpoint(endpoint).subscribe(
+      () => {
+        console.log('Endpoint deleted successfully');
+        // After successful deletion, remove the endpoint from your local data source
+        this.dataSource = this.dataSource.filter(e => e.id !== endpoint.id);
+      },
+      error => {
+        console.error('Error deleting endpoint:', error);
+        // Handle error scenario
+      }
+    );
+  }
+
+
 }
