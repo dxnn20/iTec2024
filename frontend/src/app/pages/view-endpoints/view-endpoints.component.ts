@@ -74,6 +74,6 @@ export class ViewEndpointsComponent {
   }
 
   report(row: Endpoint) {
-    this.http.post('http://localhost:1201/endpoint/report/' + row.id, {}).subscribe()
+    this.http.post('http://localhost:1201/endpoind/reportBugById/' + row.id, {}).subscribe()
   }
 }
