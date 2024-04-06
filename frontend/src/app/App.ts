@@ -16,4 +16,12 @@ export class App {
   public getName(): string {
     return this.name;
   }
+
+  public getStatus(): string {
+    return this.status;
+  }
+
+  public getEndpoint(): Endpoint[] {
+    return this.endpoint;
+  }
 }
