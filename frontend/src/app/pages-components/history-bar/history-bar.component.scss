@@ -1,6 +1,8 @@
 .history-bar {
   display: flex;
   flex-wrap: wrap; /* Allow columns to wrap to the next row */
+  max-height: 12vh;
+
 }
 
 .status-column {

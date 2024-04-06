@@ -11,6 +11,8 @@ import {
 } from "@angular/material/table";
 import {HttpClient} from "@angular/common/http";
 import {SecurityService} from "../../security/security.service";
+import {MatList, MatListItem} from "@angular/material/list";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 
 class PeriodicElement {
   position: number;
@@ -44,7 +46,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
     MatRowDef,
     MatHeaderCellDef,
     MatCellDef,
-    AppCardComponent
+    AppCardComponent,
+    MatList,
+    MatListItem,
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
+    MatCardTitle
   ],
   styleUrls: ['./home-page.component.scss']
 })

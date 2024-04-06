@@ -1,11 +1,11 @@
 .custom-card {
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 .mat-card-header {
   display: flex;
-  justify-content: space-between; /* To push the children to the edges */
-  align-items: center; /* To vertically center align the children */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .left-content {
@@ -15,9 +15,33 @@
 }
 
 .logo-title-container {
-  margin-left: 25px; /* Add some spacing between the logo and the title */
+  margin-left: 25px;
 }
 
 .status {
-  margin-left: auto; /* Push the status to the right */
+  margin-left: auto;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the start (top) */
+  align-items: stretch; /* Stretch items horizontally */
+  height: 100%; /* Ensure the card content takes up full height */
+}
+
+.row-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ensure row container takes full width */
+}
+
+.history-bar-container {
+  flex: 1; /* Allow history bar to grow and fill remaining space */
+  margin-right: 10px; /* Add spacing between history bar and button */
+}
+
+.details-button {
+  /* Optional: Add specific styles for the button */
 }
