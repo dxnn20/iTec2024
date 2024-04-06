@@ -11,6 +11,8 @@ import {
 import {Endpoint} from "../../security/endpoint";
 import {HttpClient} from "@angular/common/http";
 import {SecurityService} from "../../security/security.service";
+import {MatIconButton} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-reports-page',
@@ -25,27 +27,31 @@ import {SecurityService} from "../../security/security.service";
     MatHeaderCellDef,
     MatHeaderRow,
     MatRowDef,
-    MatHeaderRowDef
+    MatHeaderRowDef,
+    MatIconButton,
+    MatIcon
   ],
   templateUrl: './reports-page.component.html',
   styleUrl: './reports-page.component.scss'
 })
 export class ReportsPageComponent {
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource: Endpoint[] = [];
+  displayedColumns: string[] = ['path', 'duration', 'bugged', 'method', "solved"]
+  dataSource: Endpoint[]
 
   constructor(private http: HttpClient, private securityService: SecurityService) {
     this.refresh()
-    console.log(this.dataSource)
   }
 
   refresh() {
-    // this.http.get('http://localhost:8080/endpoint/getAllBuggedByUserId' + this.securityService.getId()).subscribe((data: any) => {
-    //   this.dataSource = data;
-    // })
     this.http.get('http://localhost:1201/endpoint/getAllBuggedByUserId/'+ this.securityService.getId()).subscribe((data: any) => {
       this.dataSource = data;
+    })
+  }
+
+  solve(row: Endpoint) {
+    this.http.post('http://localhost:1201/endpoint/reportFixById/' + row.id, this.dataSource).subscribe((data: any) => {
+      this.refresh()
     })
   }
 }
