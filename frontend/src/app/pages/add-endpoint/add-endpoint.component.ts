@@ -85,30 +85,31 @@ export class AddEndpointComponent {
     });
   }
 
-  deleteEndpoint(endpoint: any) {
-    const endpointId = endpoint.id; // Assuming endpoint has an ID property
-    const deleteUrl = `https://your-backend-api.com/endpoints/${endpointId}`;
+  // deleteEndpoint(endpoint: any) {
+  //   const endpointId = endpoint.id; // Assuming endpoint has an ID property
+  //   const deleteUrl = `https://your-backend-api.com/endpoints/${endpointId}`;
+  //
+  //   return this.http.delete(deleteUrl).pipe(
+  //     catchError((error) => {
+  //       console.error('Error deleting endpoint:', error);
+  //       return throwError('Something went wrong with endpoint deletion');
+  //     })
+  //   );
+  // }
 
-    return this.http.delete(deleteUrl).pipe(
-      catchError((error) => {
-        console.error('Error deleting endpoint:', error);
-        return throwError('Something went wrong with endpoint deletion');
-      })
-    );
-  }
-
-  onDeleteEndpoint(endpoint: any) {
-    this.deleteEndpoint(endpoint).subscribe(
-      () => {
-        console.log('Endpoint deleted successfully');
-        // After successful deletion, remove the endpoint from your local data source
-        this.dataSource = this.dataSource.filter(e => e.id !== endpoint.id);
-      },
-      error => {
-        console.error('Error deleting endpoint:', error);
-        // Handle error scenario
-      }
-    );
+  onDeleteEndpoint(endpoint: Endpoint) {
+    // this.deleteEndpoint(endpoint).subscribe(
+    //   () => {
+    //     console.log('Endpoint deleted successfully');
+    //     // After successful deletion, remove the endpoint from your local data source
+    //     this.dataSource = this.dataSource.filter(e => e.id !== endpoint.id);
+    //   },
+    //   error => {
+    //     console.error('Error deleting endpoint:', error);
+    //     // Handle error scenario
+    //   }
+    // );
+    this.http.delete('http://localhost:1201/endpoint/deleteById/' + endpoint.id).subscribe()
   }
 
 

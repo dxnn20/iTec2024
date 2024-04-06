@@ -21,6 +21,11 @@
         <div class="info-item">
           <p> Duration: {{ endpoint.duration }}h</p>
         </div>
+        <div class="status-info">
+          <div class="percentage-container">
+            <p>Percentage Up: {{ getPercentageUp() }}%</p>
+          </div>
+        </div>
       </div>
       <div class="bar-container">
       <app-history-bar [statusString]="endpoint.status"></app-history-bar>
