@@ -8,6 +8,7 @@ import com.example.repositories.EndpointRepository;
 import com.example.security.entities.User;
 import com.example.security.entities.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,9 @@ public class EndpointController {
 
     @Autowired
     UserRepository userRepository;
+
+//    @Autowired
+    JavaMailSender javaMailSender;
 
     Email email=new Email();
 
