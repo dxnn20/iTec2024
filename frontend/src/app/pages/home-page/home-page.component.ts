@@ -101,7 +101,7 @@ export class HomePageComponent {
       case "DOWN":
         return "red"
       case "UNSTABLE":
-        return "orange"
+        return "yellow"
       default:
         return "red"
     }

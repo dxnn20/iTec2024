@@ -129,6 +129,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 .red{
+  font-weight: bold;
   background-color: #ff0060;
   margin:auto;
   display: flex;
@@ -163,7 +164,8 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 
 .yellow{
-  background-color: yellow;
+  background-color: #ffb84d;
+  font-weight: bold;
   margin:auto;
   display: flex;
   justify-content: center;

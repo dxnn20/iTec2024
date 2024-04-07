@@ -88,22 +88,22 @@ export class ViewEndpointsComponent {
     event.stopPropagation()
     this.http.post('http://localhost:1201/endpoint/reportBugById/' + row.id, {}).subscribe()
 
-    this.send(row, event)
-  }
-
-  send(row: Endpoint, event:Event) {
-    emailjs.init('YUbc43uL64Cn_sokU')
-    let response = this.http.get('http://localhost:1201/endpoint/getUserIdByEndpointId/' + row.id, {}).subscribe(
+    this.http.get('http://localhost:1201/endpoint/getUserIdByEndpointId/' + row.id).subscribe(
       (data: any) => {
-        this.username = data;
+        console.log('Data: ' + data['name'])
+        this.username = data['name'];
       }
     )
-    console.log('Endpoint ID: ' + row.id + 'User ID: ' + this.username + 'Email to be sent to' + this.username)
 
-    emailjs.send("service_5hf2qqo", "template_mxxpzyg", {
-      reply_to: this.username,
-    }).then(r  => console.log(r.text))
+    this.send(this.username)
+  }
 
-    console.log('Email sent to' + this.username)
+  async send(username: string) {
+    emailjs.init('YUbc43uL64Cn_sokU')
+    let result = await emailjs.send("service_5hf2qqo", "template_mxxpzyg", {
+      reply_to: username
+    })
+
+    console.log(result.text)
   }
 }
