@@ -38,15 +38,15 @@ public class NewThread extends Thread{
     @Override
     public void run()
     {
-        System.out.println(localTime);
+//        System.out.println(localTime);
         List<App> apps=appRepository.findAll();
         int seconds=localTime.getSecond()+localTime.getMinute()*60+localTime.getHour()*60*60;
-        System.out.println(seconds);
+//        System.out.println(seconds);
         for (int i=0;i<apps.size();i++)
         {
             if (apps.get(i).getSeconds()!=0) if (seconds%apps.get(i).getSeconds()==0)
             {
-                System.out.println(apps.get(i));
+//                System.out.println(apps.get(i));
                 List<Endpoint> endpoints=apps.get(i).getEndpoints();
                 int a=0,b=0,c=0;
                 for (int j=0;j<endpoints.size();j++)
@@ -109,7 +109,7 @@ public class NewThread extends Thread{
     }
 
     public boolean endpointCheck(String method, String link) throws IOException {
-        System.out.println(method+" "+link);
+//        System.out.println(method+" "+link);
         URL url=new URL(link);
         HttpURLConnection request=(HttpURLConnection) url.openConnection();
         request.setRequestMethod(method.toUpperCase());
