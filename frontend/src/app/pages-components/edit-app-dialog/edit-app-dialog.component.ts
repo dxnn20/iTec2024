@@ -43,7 +43,7 @@ export class EditAppDialogComponent {
   }
 
   submitDialog() {
-    this.http.put('http://localhost:1201/app/update/', this.app).subscribe();
+    this.http.put('http://localhost:1201/app/update', this.app).subscribe();
 
   }
 }

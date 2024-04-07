@@ -51,4 +51,18 @@ public class AppController {
         User user=optionalUser.get();
         return user.getApps();
     }
+
+
+    // UPDATE
+    @PutMapping("/update")
+    public void update(@RequestBody App app)
+    {
+        Optional<App> optionalApp=appRepository.findById(app.getId());
+        App savedApp=optionalApp.get();
+
+        savedApp.setName(app.getName());
+        savedApp.setSeconds(app.getSeconds());
+
+        appRepository.save(savedApp);
+    }
 }
