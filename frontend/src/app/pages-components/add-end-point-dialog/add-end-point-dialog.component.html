@@ -2,13 +2,16 @@
 <mat-dialog-content>
   <div class="input-container">
     <mat-form-field>
+      <mat-label>Path</mat-label>
       <input matInput placeholder="Endpoint Path" [(ngModel)]="this.endPoint.path">
     </mat-form-field>
     <mat-form-field>
+      <mat-label>Duration</mat-label>
       <input matInput placeholder="Duration" [(ngModel)]="this.endPoint.duration" type="number">
     </mat-form-field>
     <mat-form-field>
-      <mat-select [(ngModel)]="this.endPoint.method">
+      <mat-label>Method</mat-label>
+      <mat-select [(ngModel)]="this.endPoint.method" value="1">
         @for (method of methods; track method) {
           <mat-option [value]="method">{{method}}</mat-option>
         }
