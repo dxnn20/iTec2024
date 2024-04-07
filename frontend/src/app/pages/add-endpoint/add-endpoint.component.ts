@@ -25,6 +25,7 @@ import {
 import {AddEndPointDialogComponent} from "../../pages-components/add-end-point-dialog/add-end-point-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {windowWhen} from "rxjs";
+import {EditEndpointComponent} from "../../pages-components/edit-endpoint/edit-endpoint.component";
 
 @Component({
   selector: 'app-add-endpoint',
@@ -63,7 +64,7 @@ export class AddEndpointComponent {
   protected endPoint: Endpoint = new Endpoint()
   displayedColumns: string[] =[ 'path', 'method', 'duration','actions'];
 
-  constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog ) {
+  constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog, protected editDiaglog: MatDialog){
     this.refresh()
   }
 
@@ -83,40 +84,11 @@ export class AddEndpointComponent {
   }
 
   openPopup() {
-    console.log(window.document.location)
     const dialogRef = this.dialog.open(AddEndPointDialogComponent, this.route.snapshot.params['id']);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
   }
 
-  // deleteEndpoint(endpoint: any) {
-  //   const endpointId = endpoint.id; // Assuming endpoint has an ID property
-  //   const deleteUrl = `https://your-backend-api.com/endpoints/${endpointId}`;
-  //
-  //   return this.http.delete(deleteUrl).pipe(
-  //     catchError((error) => {
-  //       console.error('Error deleting endpoint:', error);
-  //       return throwError('Something went wrong with endpoint deletion');
-  //     })
-  //   );
-  // }
-
-  onDeleteEndpoint(endpoint: Endpoint) {
-    // this.deleteEndpoint(endpoint).subscribe(
-    //   () => {
-    //     console.log('Endpoint deleted successfully');
-    //     // After successful deletion, remove the endpoint from your local data source
-    //     this.dataSource = this.dataSource.filter(e => e.id !== endpoint.id);
-    //   },
-    //   error => {
-    //     console.error('Error deleting endpoint:', error);
-    //     // Handle error scenario
-    //   }
-    // );
-    this.http.delete('http://localhost:1201/endpoint/deleteById/' + endpoint.id).subscribe()
+  edit(element: Endpoint, event: Event) {
+    event.stopPropagation()
+    this.editDiaglog.open(EditEndpointComponent);
   }
-
-
 }

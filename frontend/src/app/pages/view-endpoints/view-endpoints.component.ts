@@ -64,6 +64,7 @@ export class ViewEndpointsComponent {
   }
 
   open( endpoint: Endpoint ): void {
+
     const dialogRef = this.dialog.open(EndPointViewComponent, {
       data: endpoint}
     );
@@ -80,7 +81,8 @@ export class ViewEndpointsComponent {
     )
   }
 
-  report(row: Endpoint) {
+  report(row: Endpoint, event:Event) {
+    event.stopPropagation()
     this.http.post('http://localhost:1201/endpoint/reportBugById/' + row.id, {}).subscribe()
   }
 }
