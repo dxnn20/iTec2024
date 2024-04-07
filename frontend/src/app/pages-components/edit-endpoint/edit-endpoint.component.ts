@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {
+  MAT_DIALOG_DATA,
   MatDialog,
   MatDialogActions,
   MatDialogClose,
@@ -32,7 +33,7 @@ import {MatLabel} from "@angular/material/form-field";
     MatInput,
     MatOption,
     MatSelect,
-    MatLabel
+    MatLabel,
   ],
   templateUrl: './edit-endpoint.component.html',
   styleUrl: './edit-endpoint.component.scss'
@@ -40,18 +41,17 @@ import {MatLabel} from "@angular/material/form-field";
 export class EditEndpointComponent {
 
   protected methods: string[] = ['GET', 'POST', 'PUT', 'DELETE'];
-
-  id: string = '';
-
-
-  constructor(public dialogRef: MatDialogRef<EditEndpointComponent>, private http: HttpClient, protected endPoint: Endpoint) {
+  protected endPoint: Endpoint = new Endpoint();
+  constructor(public dialogRef: MatDialogRef<EditEndpointComponent>, private http: HttpClient,@Inject(MAT_DIALOG_DATA) endPoint: Endpoint) {
+    this.endPoint = endPoint;
   }
 
   closeDialog() {
+    this.dialogRef.close();
   }
 
   submit() {
-    this.http.put('http://localhost:1201/endpoint/update/' + this.id, this.endPoint).subscribe(
+    this.http.put('http://localhost:1201/endpoint/update/' + this.endPoint.app_id, this.endPoint ).subscribe(
       (data: any) => {
         this.closeDialog();
       }
