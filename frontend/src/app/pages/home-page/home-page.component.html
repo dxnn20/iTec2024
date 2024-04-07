@@ -1,8 +1,12 @@
 <div class="container" xmlns="http://www.w3.org/1999/html">
   <div class="content">
     <div class="header">
+
       <button mat-raised-button class="addButton" (click)="refresh()">
-        <p><mat-icon>reply</mat-icon></p>Refresh
+        <p>
+          <mat-icon>reply</mat-icon>
+        </p>
+        Refresh
       </button>
     </div>
     <div class="table-container">
@@ -20,7 +24,8 @@
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef> Status</th>
           <td mat-cell *matCellDef="let element">
-            <div class="status">{{ element.status }}</div></td>
+            <div class="status" [ngClass]="getStatus(element)"><p>{{ element.status }}</p></div>
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="seconds">

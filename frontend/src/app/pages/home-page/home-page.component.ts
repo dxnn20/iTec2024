@@ -15,9 +15,12 @@ import {MatList, MatListItem} from "@angular/material/list";
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
 import {App} from "../../App";
 import {Router} from "@angular/router";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {interval} from "rxjs";
+import {MatFormField, MatInput} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {NgClass} from "@angular/common";
 
 export interface PeriodicElement {
   name: string;
@@ -49,7 +52,12 @@ export interface PeriodicElement {
     MatCardContent,
     MatCardTitle,
     MatButton,
-    MatIcon
+    MatIcon,
+    MatInput,
+    MatFormField,
+    FormsModule,
+    MatIconButton,
+    NgClass
   ],
   styleUrls: ['./home-page.component.scss']
 })
@@ -58,6 +66,8 @@ export class HomePageComponent {
   // dataSource = new MatTableDataSource<[]>([]);
   displayedColumns: string[] = ['id', 'name', 'status', 'seconds'];
   dataSource: App[] = [];
+  searchValue: string = ''
+  filteredData: App[] = this.dataSource
 
   constructor(private http: HttpClient, private securityService: SecurityService, private router: Router) {
   }
@@ -76,7 +86,6 @@ export class HomePageComponent {
         for (let i = 0; i < data.length; i++)
           if (data[i].status == null)
             data[i].status = "DOWN"
-
       }
     )
   }
@@ -85,5 +94,16 @@ export class HomePageComponent {
     this.router.navigateByUrl('/view-endpoints/' + app.id).then(r => console.log(r))
   }
 
-
+  getStatus( app: App) {
+    switch (app.status) {
+      case "STABLE":
+        return "green"
+      case "DOWN":
+        return "red"
+      case "UNSTABLE":
+        return "orange"
+      default:
+        return "red"
+    }
+  }
 }
