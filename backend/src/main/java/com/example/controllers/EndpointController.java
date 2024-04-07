@@ -104,9 +104,11 @@ public class EndpointController {
 
 
     // UPDATE
-    @PutMapping(path="/update")
-    public void updateById(@RequestBody Endpoint endpoint)
+    @PutMapping(path="/update/{id}")
+    public void updateById(@RequestBody Endpoint endpoint, @PathVariable Long id)
     {
+        Optional<App> optionalApp=appRepository.findById(id);
+        endpoint.setApp(optionalApp.get());
         endpointRepository.save(endpoint);
     }
 
