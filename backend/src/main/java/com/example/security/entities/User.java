@@ -20,7 +20,7 @@ public class User {
     private String password;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<App> apps;
 
     public User()

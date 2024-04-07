@@ -111,9 +111,14 @@ public class EndpointController {
     @PutMapping(path="/update/{id}")
     public void updateById(@RequestBody Endpoint endpoint, @PathVariable Long id)
     {
-        Optional<App> optionalApp=appRepository.findById(id);
-        endpoint.setApp(optionalApp.get());
-        endpointRepository.save(endpoint);
+        Optional<Endpoint> optionalEndpoint=endpointRepository.findById(endpoint.getId());
+        Endpoint savedEndpoint=optionalEndpoint.get();
+
+        savedEndpoint.setMethod(endpoint.getMethod());
+        savedEndpoint.setPath(endpoint.getPath());
+        savedEndpoint.setDuration(endpoint.getDuration());
+
+        endpointRepository.save(savedEndpoint);
     }
 
 

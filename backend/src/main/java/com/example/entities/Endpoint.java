@@ -13,14 +13,14 @@ public class Endpoint {
 
     private String path;
     private String method;
-    @Column(name="status", length = 50000)
+    @Column(name="status", length = 4000)
     private String status;
     private int duration;
     private boolean bugged;
     private int counter;
 
     @JsonIgnore
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @ManyToOne(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name="app_id", referencedColumnName = "id")
     private App app;
 
