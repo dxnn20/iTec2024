@@ -13,6 +13,7 @@ import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -107,9 +108,11 @@ public class EndpointController {
     }
 
     @GetMapping(path="/getUserIdByEndpointId/{id}")
-    public String getUserIdByEndpointId(@PathVariable Long id)
+    public HashMap<String,String> getUserIdByEndpointId(@PathVariable Long id)
     {
-        return endpointRepository.getUserIdByEndpointId(id);
+        HashMap<String,String> hashMap=new HashMap<>();
+        hashMap.put("name",endpointRepository.getUserIdByEndpointId(id));
+        return hashMap;
     }
 
 
