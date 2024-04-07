@@ -18,6 +18,7 @@ import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../../pages-components/dialog/dialog.component";
 import {interval} from "rxjs";
+
 import {EditAppDialogComponent} from "../../pages-components/edit-app-dialog/edit-app-dialog.component";
 
 export interface PeriodicElement {
@@ -104,9 +105,10 @@ export class DashboardPageComponent implements OnInit {
     console.log(app)
     this.router.navigateByUrl('/app-add-endpoint/' + app.id).then(r => console.log(r))
   }
-
+  
   editApp(element:App, event: Event) {
     event.stopPropagation()
     this.dialog.open(EditAppDialogComponent, {data: element});
+
   }
 }

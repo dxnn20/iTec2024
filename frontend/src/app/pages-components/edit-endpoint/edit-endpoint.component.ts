@@ -43,7 +43,9 @@ export class EditEndpointComponent {
 
   protected methods: string[] = ['GET', 'POST', 'PUT', 'DELETE'];
   protected endPoint: Endpoint = new Endpoint();
+
   constructor(public dialogRef: MatDialogRef<EditEndpointComponent>, private http: HttpClient,@Inject(MAT_DIALOG_DATA) endPoint: Endpoint, protected router: Router) {
+
     this.endPoint = endPoint;
   }
 
