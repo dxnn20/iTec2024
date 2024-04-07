@@ -17,6 +17,7 @@ import {App} from "../../App";
 import {Router} from "@angular/router";
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
+import {interval} from "rxjs";
 
 export interface PeriodicElement {
   name: string;
@@ -62,7 +63,9 @@ export class HomePageComponent {
   }
 
   ngOnInit() {
-    this.refresh()
+    interval(1000).subscribe(() => {
+      this.refresh()
+    })
   }
 
   refresh() {
@@ -74,13 +77,11 @@ export class HomePageComponent {
           if (data[i].status == null)
             data[i].status = "DOWN"
 
-        console.log(data)
       }
     )
   }
 
   onClick(app: App) {
-    console.log(app)
     this.router.navigateByUrl('/view-endpoints/' + app.id).then(r => console.log(r))
   }
 

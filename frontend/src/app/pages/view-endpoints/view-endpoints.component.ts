@@ -16,6 +16,7 @@ import {SecurityService} from "../../security/security.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {EndPointViewComponent} from "../../pages-components/end-point-view/end-point-view.component";
+import {interval} from "rxjs";
 
 @Component({
   selector: 'app-view-endpoints',
@@ -44,6 +45,12 @@ export class ViewEndpointsComponent {
   protected endPoint: Endpoint = new Endpoint()
   displayedColumns: string[] =[ 'path', 'method', 'duration', 'actions'];
 
+  ngOnInit() {
+    interval(1000).subscribe(() => {
+      this.refresh()
+    })
+  }
+
   constructor(private http: HttpClient, securityService: SecurityService, private router: Router, private route: ActivatedRoute, protected dialog: MatDialog ) {
     this.refresh()
   }
@@ -57,6 +64,7 @@ export class ViewEndpointsComponent {
   }
 
   open( endpoint: Endpoint ): void {
+
     const dialogRef = this.dialog.open(EndPointViewComponent, {
       data: endpoint}
     );
@@ -73,7 +81,8 @@ export class ViewEndpointsComponent {
     )
   }
 
-  report(row: Endpoint) {
+  report(row: Endpoint, event:Event) {
+    event.stopPropagation()
     this.http.post('http://localhost:1201/endpoint/reportBugById/' + row.id, {}).subscribe()
   }
 }

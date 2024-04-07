@@ -13,6 +13,7 @@ import {HttpClient} from "@angular/common/http";
 import {SecurityService} from "../../security/security.service";
 import {MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
+import {interval} from "rxjs";
 
 @Component({
   selector: 'app-reports-page',
@@ -39,8 +40,13 @@ export class ReportsPageComponent {
   displayedColumns: string[] = ['path', 'duration', 'bugged', 'method', "solved"]
   dataSource: Endpoint[]
 
+  ngOnInit(){
+    interval(1000).subscribe(() => {
+      this.refresh()
+    })
+  }
+
   constructor(private http: HttpClient, private securityService: SecurityService) {
-    this.refresh()
   }
 
   refresh() {
