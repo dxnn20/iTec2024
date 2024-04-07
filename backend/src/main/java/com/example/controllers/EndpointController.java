@@ -1,5 +1,6 @@
 package com.example.controllers;
 
+import com.example.email.Email;
 import com.example.entities.App;
 import com.example.entities.Endpoint;
 import com.example.repositories.AppRepository;
@@ -27,6 +28,8 @@ public class EndpointController {
     @Autowired
     UserRepository userRepository;
 
+    Email email=new Email();
+
     // CREATE
     @PostMapping(path = "/createByAppId/{id}")
     public void createByAppId(@PathVariable Long id, @RequestBody Endpoint endpoint)
@@ -47,6 +50,9 @@ public class EndpointController {
 
         endpoint.setBugged(true);
         endpointRepository.save(endpoint);
+
+        System.out.println("sending mail");
+        email.send("berendeaandrei03@gmail.com","proba test wtf","itec cica");
     }
 
     @PostMapping(path="/reportFixById/{id}")
