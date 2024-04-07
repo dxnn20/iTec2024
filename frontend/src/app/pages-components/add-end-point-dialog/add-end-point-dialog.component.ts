@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
 import {FormsModule} from "@angular/forms";
-import {MatFormField} from "@angular/material/form-field";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {Endpoint} from "../../security/endpoint";
 import {HttpClient} from "@angular/common/http";
@@ -22,7 +22,8 @@ import {ActivatedRoute, ActivationEnd, Route, Router} from "@angular/router";
     MatFormField,
     MatInput,
     MatSelect,
-    MatOption
+    MatOption,
+    MatLabel
   ],
   templateUrl: './add-end-point-dialog.component.html',
   styleUrl: './add-end-point-dialog.component.scss'

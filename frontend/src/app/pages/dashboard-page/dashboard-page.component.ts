@@ -19,6 +19,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {DialogComponent} from "../../pages-components/dialog/dialog.component";
 import {interval} from "rxjs";
 
+import {EditAppDialogComponent} from "../../pages-components/edit-app-dialog/edit-app-dialog.component";
+
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -61,7 +63,7 @@ export class DashboardPageComponent implements OnInit {
 
   apps: App[] = []
 
-  displayedColumns: string[] = ['id', 'name', 'status', 'seconds']
+  displayedColumns: string[] = ['id', 'name', 'status', 'seconds', 'edit']
   dataSource = new MatTableDataSource(this.apps)
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private securityService: SecurityService, protected dialog: MatDialog, private router: Router) {
@@ -102,5 +104,11 @@ export class DashboardPageComponent implements OnInit {
   onClick(app: App) {
     console.log(app)
     this.router.navigateByUrl('/app-add-endpoint/' + app.id).then(r => console.log(r))
+  }
+  
+  editApp(element:App, event: Event) {
+    event.stopPropagation()
+    this.dialog.open(EditAppDialogComponent, {data: element});
+
   }
 }
