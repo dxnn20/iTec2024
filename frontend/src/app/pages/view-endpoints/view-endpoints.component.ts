@@ -88,20 +88,22 @@ export class ViewEndpointsComponent {
     event.stopPropagation()
     this.http.post('http://localhost:1201/endpoint/reportBugById/' + row.id, {}).subscribe()
 
+    this.send(row, event)
   }
 
   send(row: Endpoint, event:Event) {
-
-
-    event.stopPropagation()
-    this.http.post('http://localhost:1201/getUserIdByEndpointId' + row.id, {}).subscribe(
+    emailjs.init('YUbc43uL64Cn_sokU')
+    let response = this.http.get('http://localhost:1201/endpoint/getUserIdByEndpointId/' + row.id, {}).subscribe(
       (data: any) => {
         this.username = data;
       }
     )
+    console.log('Endpoint ID: ' + row.id + 'User ID: ' + this.username + 'Email to be sent to' + this.username)
 
-    emailjs.send("service_5hf2qqo","template_mxxpzyg",{
-      reply_to: "theAdminEmail@something.com",
-    });
+    emailjs.send("service_5hf2qqo", "template_mxxpzyg", {
+      reply_to: this.username,
+    }).then(r  => console.log(r.text))
+
+    console.log('Email sent to' + this.username)
   }
 }
