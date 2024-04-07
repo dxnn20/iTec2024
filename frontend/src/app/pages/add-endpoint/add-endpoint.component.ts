@@ -89,6 +89,6 @@ export class AddEndpointComponent {
 
   edit(element: Endpoint, event: Event) {
     event.stopPropagation()
-    this.editDiaglog.open(EditEndpointComponent);
+    this.editDiaglog.open(EditEndpointComponent, {data: element});
   }
 }

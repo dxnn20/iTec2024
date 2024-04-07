@@ -1,4 +1,5 @@
 export class Endpoint {
+    app_id:number;
     path: string;
     method: string;
     status: string;
