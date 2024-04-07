@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {
@@ -17,6 +18,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {EndPointViewComponent} from "../../pages-components/end-point-view/end-point-view.component";
 import {interval} from "rxjs";
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-view-endpoints',
@@ -40,6 +42,7 @@ import {interval} from "rxjs";
   styleUrl: './view-endpoints.component.scss'
 })
 export class ViewEndpointsComponent {
+  username: string;
   dataSource : Endpoint[] = []
 
   protected endPoint: Endpoint = new Endpoint()
@@ -84,5 +87,21 @@ export class ViewEndpointsComponent {
   report(row: Endpoint, event:Event) {
     event.stopPropagation()
     this.http.post('http://localhost:1201/endpoint/reportBugById/' + row.id, {}).subscribe()
+
+  }
+
+  send(row: Endpoint, event:Event) {
+
+
+    event.stopPropagation()
+    this.http.post('http://localhost:1201/getUserIdByEndpointId' + row.id, {}).subscribe(
+      (data: any) => {
+        this.username = data;
+      }
+    )
+
+    emailjs.send("service_5hf2qqo","template_mxxpzyg",{
+      reply_to: "theAdminEmail@something.com",
+    });
   }
 }
