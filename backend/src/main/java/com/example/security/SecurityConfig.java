@@ -38,6 +38,7 @@ public class SecurityConfig {
                 .requestMatchers("/app/getAll").permitAll()
                 .requestMatchers("/endpoint/getAllByAppId/{id}").permitAll()
                 .requestMatchers("/endpoint/reportBugById/{id}").permitAll()
+                .requestMatchers("/endpoint/getUserIdByEndpointId/{id}").permitAll()
                 .requestMatchers("/security/admin").hasAuthority("admin")
                 .anyRequest().authenticated());
         httpSecurity.formLogin(form -> form.usernameParameter("username").passwordParameter("password").loginPage("/login")

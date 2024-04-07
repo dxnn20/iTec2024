@@ -52,12 +52,6 @@ public class AppController {
         return user.getApps();
     }
 
-    @GetMapping(path="/getUserIdByEndpointId/{id}")
-    public String getUserIdByEndpointId(@PathVariable Long id)
-    {
-        return endpointRepository.getUserIdByEndpointId(id);
-    }
-
 
     // UPDATE
     @PutMapping("/update")
