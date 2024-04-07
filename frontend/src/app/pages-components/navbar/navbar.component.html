@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-container">
-    <a class="hover-line " routerLink="">Home</a>
+    <a class="hover-line " routerLink="home-page">Home</a>
     <a *ngIf="isLogged()" class="hover-line" routerLink="dashboard-page">DashBoard</a>
     <a *ngIf="isLogged()" class="hover-line" routerLink="reports-page">Reports</a>
     <a  *ngIf="!isLogged()" class="hover-line" routerLink="login-page">Sign-in</a>

@@ -88,8 +88,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
   refresh() {
-    // this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
-    this.http.get("http://localhost:1201/app/getAllByUserId/" + 1).subscribe(
+    this.http.get("http://localhost:1201/app/getAllByUserId/" + this.securityService.getId()).subscribe(
       (data: any) => {
         this.dataSource = data
 
@@ -105,7 +104,7 @@ export class DashboardPageComponent implements OnInit {
     console.log(app)
     this.router.navigateByUrl('/app-add-endpoint/' + app.id).then(r => console.log(r))
   }
-  
+
   editApp(element:App, event: Event) {
     event.stopPropagation()
     this.dialog.open(EditAppDialogComponent, {data: element});

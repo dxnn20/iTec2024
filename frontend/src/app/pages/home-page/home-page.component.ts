@@ -20,6 +20,7 @@ import {MatIcon} from "@angular/material/icon";
 import {interval} from "rxjs";
 import {MatFormField, MatInput} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
+import {NgClass} from "@angular/common";
 
 export interface PeriodicElement {
   name: string;
@@ -55,7 +56,8 @@ export interface PeriodicElement {
     MatInput,
     MatFormField,
     FormsModule,
-    MatIconButton
+    MatIconButton,
+    NgClass
   ],
   styleUrls: ['./home-page.component.scss']
 })
@@ -92,4 +94,16 @@ export class HomePageComponent {
     this.router.navigateByUrl('/view-endpoints/' + app.id).then(r => console.log(r))
   }
 
+  getStatus( app: App) {
+    switch (app.status) {
+      case "STABLE":
+        return "green"
+      case "DOWN":
+        return "red"
+      case "UNSTABLE":
+        return "orange"
+      default:
+        return "red"
+    }
+  }
 }
